@@ -1,0 +1,35 @@
+name: Pipeline
+
+# 1. Define os gatilhos (quando o workflow vai rodar)
+on:
+  push:
+    branches:
+      - main  # Substitua por 'master' se for o caso do seu repositório
+  pull_request:
+    branches:
+      - main
+
+# 2. Define o que será executado
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest # Sistema operacional da máquina virtual
+
+    steps:
+      # Baixa o código do seu repositório para a máquina virtual
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      # Configura o ambiente (neste caso, Node.js)
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use a mesma versão que você usa na sua máquina
+
+      # Instala as dependências do projeto
+      - name: Instalar dependências
+        run: npm install
+
+      # Executa os testes automatizados
+      - name: Rodar os testes
+        run: npm test
