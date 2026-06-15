@@ -1,3 +1,5 @@
+# ======================================== FILE CREATED BY FERNANDA BASTOS (@codebyfernanda) ========================================
+
 import requests
 import pytest
 
@@ -9,7 +11,9 @@ def test_list_all_products():
         response = requests.get(url)
         assert response.status_code == 200
         assert "produtos" in response.json()
-        print(f"\nStatus retornado para LISTAR TODOS OS PRODUTOS: {response.status_code}")
+        print(f"\nStatus returned for LIST ALL PRODUCTS: {response.status_code}")
         
     except requests.exceptions.RequestException as error_list_all_products:
-        pytest.fail(f"A API está retornando um erro na listagem de todos os produtos. Erro: {error_list_all_products}")
+        pytest.fail(f"The API is returning an error when listing all products. Error: {error_list_all_products}")
+
+# ===================================================================================================================================
