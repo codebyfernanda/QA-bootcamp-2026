@@ -84,6 +84,7 @@ def invalid_password_payload():
 # invalid_password_payload (Erro 401)
 # Fornece uma massa de dados exclusiva para a rota /login, enviando 
 # intencionalmente credenciais incorretas para validar o bloqueio de acesso.
+
 @pytest.fixture
 def invalid_password_payload(): 
     return {
@@ -96,6 +97,7 @@ def invalid_password_payload():
 # invalid_email_payload (Erro 404/401)
 # Retorna um payload de login contendo um e-mail não registrado no sistema,
 # permitindo testar as respostas de segurança contra enumeração de usuários.
+
 @pytest.fixture
 def invalid_email_payload(): 
     return {
@@ -108,6 +110,7 @@ def invalid_email_payload():
 # login_user_without_name_payload (Erro 400)
 # Massa de dados estruturada para cadastro (/usuarios) omitindo propositalmente 
 # a chave obrigatória "nome", visando testar a validação de campos do servidor.
+
 @pytest.fixture 
 def login_user_without_name_payload():
     return {
@@ -121,6 +124,7 @@ def login_user_without_name_payload():
 # login_user_without_email_payload (Erro 400)
 # Payload de cadastro que exclui intencionalmente a chave "email" para 
 # garantir que a API acione a exceção correta (Bad Request).
+
 @pytest.fixture
 def login_user_without_email_payload(): 
     return {
@@ -134,6 +138,7 @@ def login_user_without_email_payload():
 # login_user_without_password_payload (Erro 400)
 # Fornece dados incompletos de criação de usuário, sem a chave "password",
 # para validar a rigidez estrutural do contrato de cadastro.
+
 @pytest.fixture
 def login_user_without_password_payload(): 
     return {
@@ -147,6 +152,7 @@ def login_user_without_password_payload():
 # login_user_without_administrator_payload (Erro 400)
 # Retorna um payload de registro ausente da flag "administrador", 
 # atestando que o back-end exige a definição hierárquica do usuário.
+
 @pytest.fixture
 def login_user_without_administrator_payload():
     return {
@@ -156,6 +162,10 @@ def login_user_without_administrator_payload():
     }
 
 # ====================================================================
+
+# duplicated_email_user_payload (Erro 400)
+# Fornece dados duplicados de criação de usuário, sem a chave "password",
+# para validar a rigidez estrutural do contrato de cadastro.
 
 @pytest.fixture
 def duplicated_email_user_payload():
@@ -167,6 +177,10 @@ def duplicated_email_user_payload():
     }
 
 # ====================================================================
+
+# admin_auth_headers (Token Válido)
+# Gera automaticamente um token JWT válido, criando um usuário administrador 
+# temporário apenas para obter a chave de autenticação necessária para os testes. 
 
 @pytest.fixture
 def admin_auth_headers(base_url, valid_user_payload):
@@ -191,6 +205,10 @@ def admin_auth_headers(base_url, valid_user_payload):
 
 # ====================================================================
 
+# valid_product_payload
+# Massa de dados estruturada para cadastro (/usuarios) omitindo propositalmente 
+# a chave obrigatória "nome", visando testar a validação de campos do servidor.
+
 @pytest.fixture 
 def valid_product_payload():
     return {
@@ -202,6 +220,10 @@ def valid_product_payload():
 
 # ====================================================================
 
+# novo_usuario
+# Massa de dados estruturada para cadastro (/usuarios) omitindo propositalmente 
+# a chave obrigatória "nome", visando testar a validação de campos do servidor.
+
 novo_usuario = {
         "nome": "Fernanda Teste Update",
         "email": f"teste_update_{uuid.uuid4()}@qa.com.br",
@@ -210,6 +232,10 @@ novo_usuario = {
     }
 
 # ====================================================================
+
+# update_payload
+# Payload utilizado no método PUT, fornecendo dados de atualização
+# do usuário criado. 
 
 @pytest.fixture
 def update_payload():
@@ -221,6 +247,10 @@ def update_payload():
     }
 
 # ====================================================================
+
+# payload_factory
+# Payload utilizado no método PUT, fornecendo dados de atualização
+# do usuário criado. 
 
 @pytest.fixture
 def payload_factory():
@@ -235,6 +265,6 @@ def payload_factory():
             ]
         }
     return _criar
-    
+
 # ====================================================================
 
