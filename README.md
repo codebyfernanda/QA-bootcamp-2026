@@ -54,7 +54,7 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 </details>
 
 ## Project Structure
-```text
+```
 bootcamp-QA-2026-desafios/
 │
 ├── .github/
@@ -77,6 +77,7 @@ bootcamp-QA-2026-desafios/
 │   │   ├── test_update_user_nonexistent_id.py
 │   │   └── test_update_user_successfully.py
 │   └── conftest.py              # Fixtures for Sprint 3
+│   └── requirements.txt         # Python project dependencies
 │
 ├── semana_004/                  # Sprint 4 Challenges
 │   ├── tests/
@@ -87,10 +88,10 @@ bootcamp-QA-2026-desafios/
 │   │   ├── test_produtos.py
 │   │   └── test_usuarios.py
 │   └── conftest.py              # Fixtures for Sprint 4
-│
+│   └── requirements.txt         # Python project dependencies
+|
 ├── README.md                    # Project documentation
 ├── package.json                 # Node dependencies for auxiliary tools
-└── requirements.txt             # Python project dependencies
 ```
 
 ## Metrics & Results
