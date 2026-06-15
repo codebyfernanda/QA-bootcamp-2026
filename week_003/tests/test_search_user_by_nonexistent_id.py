@@ -17,7 +17,7 @@ def test_search_user_by_nonexistent_id():
         
         assert response.status_code == 400
         assert "message" in response_body, f"The 'message' key was not found in the response! API Response: {response_body}"
-        assert response_body["message"] == "User not found"
+        assert response_body["message"] == "Usuário não encontrado"
         
     except requests.exceptions.RequestException as error_search_nonexistent_id:
         pytest.fail(f"The request failed due to a connection error: {error_search_nonexistent_id}") 
