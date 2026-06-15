@@ -19,7 +19,7 @@ def test_update_user_successfully(my_user_fixture):
     try:
         response = requests.put(url, json=payload)
         assert response.status_code == 200
-        assert response.json()["message"] == "Record updated successfully"
+        assert response.json()["message"] == "Registro alterado com sucesso"
         print(f"\nStatus returned for SUCCESSFUL USER UPDATE: {response.status_code}")
         
     except requests.exceptions.RequestException as error_update_user:
