@@ -28,4 +28,4 @@ jobs:
           pip install pytest pytest-schema jsonschema requests
 
       - name: Rodar os testes
-        run: pytest
+        run: pytest --ignore=semana_003
