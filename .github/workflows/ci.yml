@@ -24,7 +24,7 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Use a mesma versão que você usa na sua máquina
+          node-version: '24'
 
       # Instala as dependências do projeto
       - name: Instalar dependências
