@@ -169,7 +169,8 @@ In this way, we ensure that the entire ecosystem speaks the same language. **Ref
 * [How to verify REST API test coverage](https://medium.com/revista-dtar/como-verificar-a-cobertura-de-testes-da-api-rest-9e2f745564b)
 * [Test Coverage Criteria for RESTful Web APIs](https://www.researchgate.net/publication/327774902_Test_coverage_criteria_for_RESTful_web_APIs) 
 * [Introduction to Contract Testing](https://martinfowler.com/articles/contract-testing.html)
-* [Understanding JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) 
+* [Understanding JSON Schema](https://json-schema.org/learn/getting-started-step-by-step)
+* [PyTest-Full-Stack 11 - Using pytest-docker package to test docker](https://www.youtube.com/watch?v=43YKqEg49HI)
 
 ---
 
