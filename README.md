@@ -104,7 +104,6 @@ Além de atingir 100% de cobertura de operadores, a suíte foca na **qualidade d
 | Severidade | Bug / Inconsistência | Comportamento Esperado | Comportamento Obtido |
 | --- | --- | --- | --- |
 | 🔴 **Crítica** | **Elevação de Privilégio** | O sistema deve impedir que um usuário comum altere seu perfil para `administrador: true`. | O `PUT /usuarios/{id}` aceita a alteração, promovendo o usuário a administrador. |
-| 🟡 **Média** | **Falha na Mensagem de Retorno** | O `DELETE` deve retornar uma mensagem de sucesso clara ao excluir um produto. | Deleta o produto com sucesso, mas retorna a mensagem: "Nenhum registro excluído". |
 | 🔵 **Baixa** | **Inconsistência de Resposta (Payload Vazio)** | Retornar erro de validação padronizado (`400`) em todas as rotas ao receber `{}`. | Retorna `400` em rotas públicas e `401` em rotas privadas para o mesmo payload. |
 
 ---
