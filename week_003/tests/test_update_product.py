@@ -30,7 +30,7 @@ def test_update_product(my_product_fixture):
         assert response.status_code == 200
         
         assert "message" in response_body, f"The 'message' key was not found in the response! {response_body}"
-        assert response_body["message"] == "Record updated successfully"
+        assert response_body["message"] == "Registro alterado com sucesso"
         print(f"\nStatus returned for SUCCESSFUL PRODUCT UPDATE: {response.status_code}")
         
     except requests.exceptions.RequestException as error_update_product_sucessfully:
