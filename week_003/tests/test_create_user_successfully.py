@@ -1,11 +1,12 @@
-# ======================================== ARQUIVO CRIADO POR FERNANDA BASTOS (@codebyfernanda) ========================================
+# ======================================== FILE CREATED BY FERNANDA BASTOS (@codebyfernanda) ========================================
 
 import requests
 import pytest
 import uuid 
 
-# Criar cadastro com sucesso (201/200)
-#   Os dados que serão enviados (Usar Payload)
+# Create registration successfully (201/200)
+#   The data that will be sent (Use Payload)
+
 def test_create_user_successfully():
     url = "https://compassuol.serverest.dev/usuarios"
     
@@ -19,7 +20,9 @@ def test_create_user_successfully():
     try:
         response = requests.post(url, json=payload)
         assert response.status_code in [200, 201]
-        print(f"\nStatus retornado para CADASTRO COM SUCESSO: {response.status_code}")
+        print(f"\nStatus returned for SUCCESSFUL REGISTRATION: {response.status_code}")
         
     except requests.exceptions.RequestException as error_create_user_successfully:
-        pytest.fail(f"A API está retornando um erro. Erro: {error_create_user_successfully}")
+        pytest.fail(f"The API is returning an error. Error: {error_create_user_successfully}")
+
+# ===================================================================================================================================
