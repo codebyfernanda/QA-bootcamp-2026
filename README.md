@@ -55,21 +55,17 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 
 ## Progress Matrix
 
-Below is the comprehensive verification matrix tracking all requirements, architectural deliverables and engineering practices implemented.
+The project’s lifecycle and deliverables have been consolidated through a verification matrix, split across five key phases to ensure high engineering standards, architectural integrit, and robust test practices.
 
-| Status | Phase / Focus | Deliverable | Technical Description |
-| :---: | :--- | :--- | :--- |
-| 🟢 Done | **1. Planning** | `test-plan_week_004.md` | Comprehensive test strategy, target endpoints and completion criteria. |
-| 🟢 Done | | Scenarios Mapping | Mapped list of target endpoints, positive, negative and validation paths. |
-| 🟢 Done | **2. Test Expansion** | Users & Login | Complete functional CRUD validations for users and multi-scenario authentication lifecycle. |
-| 🟢 Done | | Products Catalog | Integration flows for catalog management, including schema checks and cascading deletions. |
-| 🟢 Done | | Dynamic Auth Flow | Role-Based Access Control (RBAC) handling to auto-distribute tokens to protected endpoints. |
-| 🟢 Done | **3. Metrics** | English Execution | Entire repository documentation internationalized and written standard English. |
-| 🟢 Done | | Coverage Framework | Mathematical analysis tracking tested endpoints against total available API pathways. |
-| 🟢 Done | **4. Defect Tracking**| Real Bugs Discovery | Active scanning of infrastructure, with standardized bug report logs opened on GitHub Issues. |
-| 🟢 Done | **5. Infrastructure**| Contract Verification | API response payload integrity checks using `pytest-schema` across multiple endpoints. |
-| 🟢 Done | | GitHub Actions (CI) | Workflow definitions (`ci.yml`) triggering cloud automation instantly on every push. |
-| 🟢 Done | | Dockerization | Environment isolation using a slim base image with layer caching for fast runtime. |
+The journey began with the **Planning phase**, which established a solid foundation for the entire testing lifecycle. A test strategy was defined within the `test-plan_week_004.md` file, outlining target endpoints and explicit completion criteria. Additionally, supported by a detailed scenarios mapping process, which produced an exhaustive list of target endpoints evaluating positive, negative validation pathways.
+
+Building upon this foundation, the project transitioned into the **Test Expansion phase** to validate core application components. This stage achieved complete functional CRUD validations for users and login mechanisms, managing the multi-scenario authenticatio. The products catalog integration flows covered, incorporating schema checks. 
+
+Project visibility and engineering insight were then prioritized during the **Metrics phase**. To ensure global maintainability, the entire repository documentation and execution logs were written in standard English. Simultaneously, a coverage framework was introduced, employing mathematical analysis to track tested endpoints against the total available API pathways, ensuring quantifiable test depth.
+
+System resilience was actively enforced during the **Defect Tracking phase** through real bugs discovery. This involved active and continuous scanning of the application infrastructure, which successfully translated detected vulnerabilities into bug report logs opened directly on GitHub Issues for tracking and resolution.
+
+Finally, the ecosystem was hardened in the **Infrastructure phase** to guarantee a reliable delivery. Contract verification was established to validate API response payload integrity across multiple endpoints using `pytest-schema`. This flow was fully automated through GitHub Actions, utilizing workflow definitions in the `ci.yml` file to trigger cloud automation instantly on every code push. The deployment pipeline is completed by the full dockerization of the application, achieving complete environment isolation using a optimized-slim base image.
 
 ---
 
