@@ -54,31 +54,28 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 </details>
 
 ## Project Structure
-```
-## Project Structure
-
 ```text
-Desafios_Bootcamp_QA/Desafios/
+bootcamp-QA-2026-desafios/
 │
 ├── .github/
 │   └── workflows/
 │       └── ci.yml               # CI/CD configuration (GitHub Actions)
 │
 ├── semana_003/                  # Sprint 3 Challenges
-│   └── tests/
-│       ├── test_create_user_duplicated_email.py
-│       ├── test_create_user_successfully.py
-│       ├── test_delete_product.py
-│       ├── test_delete_user_successfully.py
-│       ├── test_if_API_is_online.py
-│       ├── test_list_all_products.py
-│       ├── test_runningALL.py
-│       ├── test_search_product_by_id.py
-│       ├── test_search_user_by_id.py
-│       ├── test_search_user_by_nonexistent_id.py
-│       ├── test_update_product.py
-│       ├── test_update_user_nonexistent_id.py
-│       └── test_update_user_successfully.py
+│   ├── tests/
+│   │   ├── test_create_user_duplicated_email.py
+│   │   ├── test_create_user_successfully.py
+│   │   ├── test_delete_product.py
+│   │   ├── test_delete_user_successfully.py
+│   │   ├── test_if_API_is_online.py
+│   │   ├── test_list_all_products.py
+│   │   ├── test_runningALL.py
+│   │   ├── test_search_product_by_id.py
+│   │   ├── test_search_user_by_id.py
+│   │   ├── test_search_user_by_nonexistent_id.py
+│   │   ├── test_update_product.py
+│   │   ├── test_update_user_nonexistent_id.py
+│   │   └── test_update_user_successfully.py
 │   └── conftest.py              # Fixtures for Sprint 3
 │
 ├── semana_004/                  # Sprint 4 Challenges
@@ -89,12 +86,11 @@ Desafios_Bootcamp_QA/Desafios/
 │   │   ├── test_login.py
 │   │   ├── test_produtos.py
 │   │   └── test_usuarios.py
-│   ├── conftest.py              # Global fixtures for Sprint 4
-│   └── requirements.txt         # Python dependencies
+│   └── conftest.py              # Fixtures for Sprint 4
 │
-├── venv/                        # Virtual environment (Ignored by Git)
+├── README.md                    # Project documentation
 ├── package.json                 # Node dependencies for auxiliary tools
-└── README.md                    # Project documentation
+└── requirements.txt             # Python project dependencies
 ```
 
 ## Metrics & Results
