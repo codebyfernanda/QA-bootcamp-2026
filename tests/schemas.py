@@ -218,7 +218,8 @@ duplicated_email_update_user_schema = {
 
 # Schema para POST /produtos
 # Valida a resposta de sucesso (201) após a criação de um produto,
-# garantindo que a mensagem de confirmação e o ID gerado sejam recebidos corretamente.
+# garantindo que a mensagem de confirmação e o ID gerado sejam recebidos 
+# corretamente.
 
 create_product_success_schema = {
     "type": "object",
@@ -233,7 +234,8 @@ create_product_success_schema = {
 
 # Schema para POST /produtos (nome ausente)
 # Valida a resposta de erro (400) ao tentar criar um produto sem 
-# informar o campo "nome", garantindo que a validação do servidor seja acionada.
+# informar o campo "nome", garantindo que a validação do servidor seja
+# acionada.
 
 missing_product_name_schema = {
     "type": "object",
@@ -261,7 +263,8 @@ missing_product_price_schema = {
 
 # Schema para POST /produtos (descrição ausente)
 # Valida a resposta de erro (400) ao tentar criar um produto sem 
-# informar o campo "descricao", garantindo que a validação do servidor seja acionada.
+# informar o campo "descricao", garantindo que a validação do servidor seja 
+# acionada.
 
 missing_product_description_schema = {
     "type": "object",
@@ -275,7 +278,8 @@ missing_product_description_schema = {
 
 # Schema para GET /produtos
 # Valida a resposta de sucesso (200) após a listagem de produtos,
-# garantindo que a quantidade e a lista de produtos sejam recebidas corretamente.
+# garantindo que a quantidade e a lista de produtos sejam recebidas 
+# corretamente.
 
 list_all_products_schema = {
     "type": "object",
@@ -303,7 +307,8 @@ list_all_products_schema = {
 
 # Schema para POST /carrinhos
 # Valida a resposta de sucesso (201) após a criação de um carrinho,
-# garantindo que a mensagem de confirmação e o ID gerado sejam recebidos corretamente.
+# garantindo que a mensagem de confirmação e o ID gerado sejam recebidos 
+# corretamente.
 
 create_cart_successfully_schema = {
     "type": "object",
