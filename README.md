@@ -55,7 +55,7 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 
 ## Project Structure
 ```
-bootcamp-QA-2026-desafios/
+QA-bootcamp-2026/
 │
 ├── .github/
 │   └── workflows/
@@ -175,8 +175,8 @@ In this way, we ensure that the entire ecosystem speaks the same language. **Ref
 
 1. **Clone the repository:**
 ```bash
-git clone <https://github.com/codebyfernanda/bootcamp-QA-2026-desafios.git>
-cd bootcamp-QA-2026-desafios
+git clone <https://github.com/codebyfernanda/QA-bootcamp-2026.git>
+cd QA-bootcamp-2026
 
 ```
 
