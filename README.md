@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/Status-Finalizado-success" />
 </p>
 
-Este projeto consiste em uma suíte de testes automatizados desenvolvida em **Python**, utilizando o framework **Pytest**. O objetivo principal é validar as regras de negócio e os contratos dos endpoints de *Usuários*, *Produtos*, *Login* e *Carrinhos* da API pública **ServeRest**, garantindo a integridade das informações, a resiliência do sistema e a exatidão das respostas.
+Este projeto consiste em uma suíte de testes automatizados desenvolvida em **Python**, utilizando o framework **Pytest**. O objetivo principal é validar as regras de negócio e os contratos dos endpoints de *Usuários*, *Produtos*, *Login* e *Carrinhos* da API pública [**ServeRest**](https://compassuol.serverest.dev/?lang=pt-BR#/), garantindo a integridade das informações, a resiliência do sistema e a exatidão das respostas.
 
 ---
 
@@ -123,13 +123,13 @@ Além de atingir 100% de cobertura de operadores, a suíte foca na **qualidade d
 
 ## Conclusão
 
-O desafio foi um verdadeiro mergulho no que significa, na prática, ser uma Eng. de Qualidade. Conforme o nosso instrutor Jacques Schmitz disse na nosso 1º Workshop, "o QA atua em todo o ciclo, como facilitador na vida do time que pode influenciar no design, auxiliar na observabilidade e na questão de como lidar com a massa de dados obtida pelo negócio". Entendi que, quando estruturamos testes bem organizados, a missão não é somente encontrar bug mas prevenir que problemas apareçam, ao mesmo tempo que reduz riscospara o negócio. 
+O desafio foi um verdadeiro mergulho no que significa, na prática, ser uma Eng. de Qualidade. Conforme o nosso instrutor Jacques Schmitz comentou no nosso 1º Workshop, **"o QA atua em todo o ciclo, como facilitador na vida do time que pode influenciar no design, auxiliar na observabilidade e na questão de como lidar com a massa de dados obtida pelo negócio"**. Entendi que, quando estruturamos testes bem organizados, a missão não é somente encontrar bug mas prevenir que problemas apareçam, ao mesmo tempo que reduz riscos para o negócio. 
 
-Muito além de apenas automatizar o trabalho manual, estamos construindo uma camada de segurança "para ter tranquilidade e segurança com as mudanças" e "garantir que as mudanças não quebrem outros aspectos do código", é o que afirmou o prof. José Correia, Especialista em Qualidade de Software, no curso Início Rápido em Teste e QA, disponível na Udemy (que vimos na primeira semana de estudos no bootcamp).
+Muito além de apenas automatizar o trabalho manual, estamos construindo uma camada de segurança "para ter tranquilidade e segurança com as mudanças" e "garantir que as mudanças não quebrem outros aspectos do código", é o que afirmou o prof. José Correia, Especialista em Qualidade de Software, no curso Início Rápido em Teste e QA, disponível na Udemy (que estudamos durante a primeira semana de estudos no Bootcamp).
 
-A refatoração que realizei nesta quarta semana me trouxe um insight valioso: * qualidade é parte intrínseca da arquitetura, e devemos atuar em todo ciclo (shift-left), conforme trabalhado no Questionário da segunda semana de estudos. Quando tratamos os contratos de API com o mesmo cuidado que tratamos a interface do usuário, fazemos com que todos enxerguem "que qualidade é um esforço de time e importante para o produto", conceito trabalhado por Correia. 
+A refatoração que realizei nesta quarta semana me trouxe um insight valioso: **qualidade é parte intrínseca da arquitetura e, nós, como QA, devemos atuar em todo o ciclo da aplicação** (conforme indicado pelo raciocínio shift-left), tal questão foi perguntada no nosso Questionário da segunda semana de estudos. Quando tratamos os contratos de API com o mesmo cuidado que tratamos a interface do usuário, fazemos com que todos enxerguem "que qualidade é um esforço de time e importante para o produto", conceito trabalhado por Correia. 
 
-Dessa forma, garantimos que o ecossistema inteiro fale a mesma língua. E pensando em toda essa experiência: Sigo ainda mais motivada e com a bagagem reforçada para aplicar essa visão estratégica em cenários de negócios, exercendo o papel de um membro ativo do projeto que trabalha para aconselhar sobre qualidade.
+Dessa forma, garantimos que o ecossistema inteiro fale a mesma língua. **E pensando em toda essa experiência: Sigo ainda mais motivada e com a bagagem reforçada para aplicar essa visão estratégica em cenários de negócios, exercendo o papel de um membro ativo do projeto que trabalha para aconselhar sobre qualidade.**
 
 ---
 
