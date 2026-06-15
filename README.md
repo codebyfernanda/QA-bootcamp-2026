@@ -214,7 +214,7 @@ pytest -v
 
 This project was developed by **Fernanda Bastos dos Santos** [(@codebyfernanda)](https://github.com/codebyfernanda), a student of **Analysis and Systems Development** at Mackenzie, during the **BOOTCAMP | AWS AI FDE DRIVEN QUALITY ENGINEERING** hosted by Compass UOL in partnership with [AI/R Company](https://aircompany.ai/).
 
-I would like to express my sincere gratitude to Squad 2 for their engagement, knowledge sharing, and support throughout our bootcamp journey. A special thanks goes to my colleagues [Renan Pacheco](https://github.com/Renanpacheco) and [Vitor Kunicki](https://github.com/vitto2099)—your patience, availability, and guidance were fundamental in helping me overcome the challenges of this delivery. 
+I would like to express my sincere gratitude to Squad 2 for their engagement, knowledge sharing, and support throughout our bootcamp journey. A special thanks goes to my colleagues [Renan Pacheco](https://github.com/Renanpacheco) and [Vitor Kunicki](https://github.com/vitto2099) — your patience, availability, and guidance were fundamental in helping me overcome the challenges of this delivery. 
 
 I would also like to take this opportunity to thank my instructors, Amanda Almeida and [Jacques Schmitz](https://github.com/juniorschmitz), for their continuous support and readiness to help with technical content during our training, as well as our Scrum Master, Leticia Souza, for her daily guidance and sensitivity toward our journey in the program. Thank you so much! :)
  
