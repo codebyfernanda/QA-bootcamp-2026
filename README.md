@@ -91,7 +91,9 @@ QA-bootcamp-2026/
 │   └── requirements.txt         # Python project dependencies
 |
 ├── README.md                    # Project documentation
+└── Dockerfile                   # Docker configuration for isolated test execution environment
 └── package.json                 # Node dependencies for auxiliary tools
+└── requirements.txt             # Python project dependencies
 ```
 
 ## Metrics & Results
