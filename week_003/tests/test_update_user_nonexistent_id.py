@@ -26,7 +26,7 @@ def test_update_user_nonexistent_id():
         assert response.status_code == 201
         
         assert "message" in response_body, f"The 'message' key was not found in the response! {response_body}"
-        assert response_body["message"] == "Registration completed successfully"
+        assert response_body["message"] == "Cadastro realizado com sucesso"
         
     except requests.exceptions.RequestException as error_update_user_nonexistent_id:
         pytest.fail(f"The request failed due to a connection error: {error_update_user_nonexistent_id}")
