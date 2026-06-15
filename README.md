@@ -53,6 +53,25 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 - [x] Full structural validation via `JSON Schema`.
 </details>
 
+Below is the comprehensive verification matrix tracking all requirements, architectural deliverables and engineering practices implemented.
+
+| Status | Phase / Focus | Deliverable | Technical Description |
+| :--- | :--- | :--- | :---: |
+| `Done` <br> `[x]` | **1. Test Planning** | `test-plan_week_004.md` | Comprehensive architectural documentation mapping test suite objectives, tools (Python, Pytest, Requests), execution scope and explicit completion criteria. |
+| Scenarios Mapping | Exhaustive list of target endpoints, positive paths, negative validations, and contract boundary conditions structured prior to core refactoring. |
+|`Done` <br> `[x]` | **2. Test Expansion** | Users Endpoint | Maintained and evolved the legacy functional validations from Week 3 incrementally, avoiding regression. |
+| | Login Validation | Complete coverage of authentication mechanisms including happy paths, wrong passwords, non-existent entities, and empty fields. | 
+| | Products Management | Full integration flow covering listing, schema validations, query-by-ID, updates, and cascading teardowns (deletions). | 
+| | Dynamic Auth Flow | Clean handling of Role-Based Access Control (RBAC), automatically generating and distributing administrator tokens to protected endpoints. | 
+| `Done` <br> `[x]` | **3. Metrics & Reports** | English Execution | Main repository documentation completely written in English, maintaining industry standards for open-source and professional setups. |
+| | Coverage Framework | Clear mathematical analysis outlining total endpoints tested vs. available API pathways, using the reference article matrix. | 
+| | Boundary Definitions | Fully documented constraints, explicitly stating which edge-case responses or third-party scopes were excluded with technical justifications. | 
+| `Done` <br> `[x]` | **4. Defect Tracking** | Real Bugs Discovery | Active scanning of the target infrastructure to reveal unexpected payload exceptions or implicit server crashes. | 
+| | GitHub Issues | Standardized bug report logs opened on the repository containing clear severity indexing, reproduction steps, expected behaviors, and raw console payloads. |
+| `Done` <br> `[x]` | **5. Infrastructure** | Contract Verification | Integration of `pytest-schema` validating server payloads against strict architectural data types for at least 3 separate endpoints. |
+| | GitHub Actions (CI) | Workflow definitions (`ci.yml`) triggering sandboxed runtime automation instantly on the remote cloud orchestration engine for every push. | 
+| | Dockerization | Optimized `Dockerfile` (`python:3.12-slim`) with isolated layers caching and `requirements.txt` execution for deterministic, environment-agnostic runs. |
+
 ## Project Structure
 ```
 QA-bootcamp-2026/
