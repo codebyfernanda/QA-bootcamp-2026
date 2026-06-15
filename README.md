@@ -151,8 +151,8 @@ Beyond achieving 100% operator coverage, the suite focuses on the quality of val
 
 | Severity | Bug / Inconsistency | Expected Behavior | Actual Behavior |
 | :--- | :--- | :--- | :--- |
-| **(!) Critical** | **Privilege Escalation** | The system must prevent a standard user from changing their profile to `administrador: true`. | The `PUT /usuarios/{id}` endpoint allows the change, promoting the user to administrator. |
-| **(-) Low** | **Response Inconsistency (Empty Payload)** | Return a standardized validation error (`400`) on all routes when receiving `{}`. | Returns `400` on public routes and `401` on private routes for the same payload. |
+| **Critical** | **Privilege Escalation** | The system must prevent a standard user from changing their profile to `administrador: true`. | The `PUT /usuarios/{id}` endpoint allows the change, promoting the user to administrator. |
+| **Low** | **Response Inconsistency (Empty Payload)** | Return a standardized validation error (`400`) on all routes when receiving `{}`. | Returns `400` on public routes and `401` on private routes for the same payload. |
 
 ---
 
