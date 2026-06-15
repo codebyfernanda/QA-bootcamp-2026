@@ -9,8 +9,6 @@
 
 This project consists of an automated test suite developed in **Python** using the **Pytest** framework. The primary objective is to validate the business rules and contracts of the *Users*, *Products*, *Login* and *Carts* endpoints of the public API [**ServeRest**](https://compassuol.serverest.dev/?lang=pt-BR#/), ensuring data integrity, system resilience and response accuracy.
 
----
-
 ## Architectural Evolution and Refactoring (Week 04)
 
 During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desafios/tree/main/semana_004) of the Bootcamp, the project architecture was refactored following Quality Engineering best practices:
@@ -20,8 +18,6 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 * **Base URL Centralization:** Created dedicated fixtures to manage the API base URL, eliminating string repetition across tests and facilitating seamless transitions between different testing environments.
 * **State Management (Setup/Teardown):** Implemented automated database cleanup routines (`teardown`), ensuring complete independence between test scenarios.
 * **Contract Testing:** Evolved from simple `status_code` and isolated key validations to full structural validation of the response payload using the `jsonschema` library.
-
----
 
 ## Test Plan
 
@@ -141,16 +137,12 @@ Beyond achieving 100% operator coverage, the suite focuses on the quality of val
 * **JSON Schema Validation:** Guarantee that the API contract is respected in every response, ensuring the Front-End receives the expected data format.
 * **Integration Flows:** Tests that orchestrate dependencies, such as creating a product for subsequent use in cart creation, simulating real-world system usage.
 
---- 
-
 ### Bugs and Inconsistencies Found
 
 | Severity | Bug / Inconsistency | Expected Behavior | Actual Behavior |
 | :--- | :--- | :--- | :--- |
 | **Critical** | **Privilege Escalation** | The system must prevent a standard user from changing their profile to `administrador: true`. | The `PUT /usuarios/{id}` endpoint allows the change, promoting the user to administrator. |
 | **Low** | **Response Inconsistency (Empty Payload)** | Return a standardized validation error (`400`) on all routes when receiving `{}`. | Returns `400` on public routes and `401` on private routes for the same payload. |
-
----
 
 ## Main Challenges and Lessons Learned
 
@@ -174,8 +166,6 @@ Far beyond simply automating manual tasks, we are building a safety layer "to ha
 The refactoring I carried out during this fourth week gave me a valuable insight: **quality is an intrinsic part of architecture, and as QAs, we must act throughout the entire application lifecycle** (as indicated by the shift-left approach), a topic covered in our second-week quiz. When we treat API contracts with the same care that we treat the user interface, we help everyone realize "that quality is a team effort and vital for the product," a concept emphasized by Correia.
 
 In this way, we ensure that the entire ecosystem speaks the same language. **Reflecting on this entire experience: I feel even more motivated and equipped with a stronger toolkit to apply this strategic vision in business scenarios, acting as an active project member who provides guidance on quality.**
-
----
 
 ## References
 
