@@ -55,20 +55,46 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 
 ## Project Structure
 ```
-bootcamp-QA-2026-desafios/
-├── .github/              # CI/CD configurations (Workflows)
-├── tests/                # Centralized test directory (outside of week folders)
-│   ├── __init__.py
-│   ├── conftest.py       # Global fixtures
-│   ├── schemas.py        # JSON Schemas
-│   ├── test_login.py
-│   ├── test_usuarios.py
-│   ├── test_produtos.py
-│   └── test_carrinhos.py
-├── .gitignore            # Important: ignore __pycache__, .venv, .env
-├── README.md
-├── requirements.txt
-└── package.json          # (If there are node dependencies for auxiliary tools)
+## Project Structure
+
+```text
+Desafios_Bootcamp_QA/Desafios/
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml               # CI/CD configuration (GitHub Actions)
+│
+├── semana_003/                  # Sprint 3 Challenges
+│   └── tests/
+│       ├── test_create_user_duplicated_email.py
+│       ├── test_create_user_successfully.py
+│       ├── test_delete_product.py
+│       ├── test_delete_user_successfully.py
+│       ├── test_if_API_is_online.py
+│       ├── test_list_all_products.py
+│       ├── test_runningALL.py
+│       ├── test_search_product_by_id.py
+│       ├── test_search_user_by_id.py
+│       ├── test_search_user_by_nonexistent_id.py
+│       ├── test_update_product.py
+│       ├── test_update_user_nonexistent_id.py
+│       └── test_update_user_successfully.py
+│   └── conftest.py              # Fixtures for Sprint 3
+│
+├── semana_004/                  # Sprint 4 Challenges
+│   ├── tests/
+│   │   ├── __init__.py
+│   │   ├── schemas.py           # JSON Schemas for validation
+│   │   ├── test_carrinhos.py
+│   │   ├── test_login.py
+│   │   ├── test_produtos.py
+│   │   └── test_usuarios.py
+│   ├── conftest.py              # Global fixtures for Sprint 4
+│   └── requirements.txt         # Python dependencies
+│
+├── venv/                        # Virtual environment (Ignored by Git)
+├── package.json                 # Node dependencies for auxiliary tools
+└── README.md                    # Project documentation
 ```
 
 ## Metrics & Results
