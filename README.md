@@ -91,7 +91,7 @@ bootcamp-QA-2026-desafios/
 │   └── requirements.txt         # Python project dependencies
 |
 ├── README.md                    # Project documentation
-├── package.json                 # Node dependencies for auxiliary tools
+└── package.json                 # Node dependencies for auxiliary tools
 ```
 
 ## Metrics & Results
