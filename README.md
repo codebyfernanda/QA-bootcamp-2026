@@ -53,7 +53,7 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 - [x] Full structural validation via `JSON Schema`.
 </details>
 
-## Delivery Progress Matrix
+## Progress Matrix
 
 Below is the comprehensive verification matrix tracking all requirements, architectural deliverables and engineering practices implemented.
 
