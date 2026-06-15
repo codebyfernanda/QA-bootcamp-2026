@@ -17,7 +17,7 @@ def test_delete_user_successfully(my_user_fixture):
         assert response.status_code == 200
         
         assert "message" in response_body,f"The 'message' key is missing from the response! {response_body}"
-        assert response_body["message"] == "Record deleted successfully"
+        assert response_body["message"] == "Registro excluído com sucesso"
         print(f"\nStatus returned for SUCCESSFUL DELETE: {response.status_code}")
         
     except requests.exceptions.RequestException as error_delete_user_sucessfully:
