@@ -22,3 +22,5 @@ def test_delete_user_successfully(my_user_fixture):
         
     except requests.exceptions.RequestException as error_delete_user_sucessfully:
         pytest.fail(f"The API is throwing an error on successful deletion. Error: {error_delete_user_sucessfully}") 
+
+# ===================================================================================================================================
