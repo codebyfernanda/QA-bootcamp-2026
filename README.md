@@ -1,160 +1,163 @@
-# Desafio Técnico | Bootcamp AWS AI FDE Driven Quality Engineering 
+# Technical Challenge | Bootcamp AWS AI FDE Driven Quality Engineering 
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Pytest-9.0-0A9EDC?logo=pytest&logoColor=white" />
   <img src="https://img.shields.io/badge/Coverage-100%25-brightgreen" />
-  <img src="https://img.shields.io/badge/Status-Finalizado-success" />
+  <img src="https://img.shields.io/badge/Status-Finished-success" />
 </p>
 
-Este projeto consiste em uma suíte de testes automatizados desenvolvida em **Python**, utilizando o framework **Pytest**. O objetivo principal é validar as regras de negócio e os contratos dos endpoints de *Usuários*, *Produtos*, *Login* e *Carrinhos* da API pública [**ServeRest**](https://compassuol.serverest.dev/?lang=pt-BR#/), garantindo a integridade das informações, a resiliência do sistema e a exatidão das respostas.
+This project consists of an automated test suite developed in **Python** using the **Pytest** framework. The primary objective is to validate the business rules and contracts of the *Users*, *Products*, *Login*, and *Carts* endpoints of the public API [**ServeRest**](https://compassuol.serverest.dev/?lang=pt-BR#/), ensuring data integrity, system resilience, and response accuracy.
 
 ---
 
-## Evolução da Arquitetura e Refatoração (Semana 04)
+## Architectural Evolution and Refactoring (Week 04)
 
-Durante a [quarta semana](https://github.com/codebyfernanda/bootcamp-QA-2026-desafios/tree/main/semana_004) do Bootcamp, a arquitetura do projeto foi refatorada seguindo as melhores práticas de Engenharia de Qualidade para eliminar gargalos de manutenção e melhorar a legibilidade do código:
+During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desafios/tree/main/semana_004) of the Bootcamp, the project architecture was refactored following Quality Engineering best practices:
 
-* **Modularização por Domínio de Negócio:** Reorganização dos arquivos de teste em módulos claros por contexto (Login, Usuários, Produtos e Carrinhos), abandonando abordagens monolíticas.
-* **Adoção do Padrão AAA (Arrange, Act, Assert):** Remoção de blocos redundantes de `try/except` que poluíam o código. A estrutura agora segue rigorosamente o fluxo de *Organizar, Agir e Validar*, tornando os testes focados e legíveis.
-* **Centralização da Base URL:** Criação de *fixtures* dedicadas para gerenciar a URL base da API, eliminando a repetição de strings nos testes e facilitando a transição entre diferentes ambientes de teste.
-* **Gestão de Estado (Setup/Teardown):** Implementação de rotinas automatizadas de limpeza da base de dados (`teardown`), garantindo a independência entre os cenários.
-* **Testes de Contrato (Contract Testing):** Evolução das validações simples de `status_code` e chaves isoladas para uma validação estrutural completa do payload de resposta, utilizando a biblioteca `jsonschema`.
+* **Domain-Driven Modularization:** Reorganized test files into clear modules based on context (Login, Users, Products, and Carts), moving away from monolithic structures.
+* **Adoption of the AAA Pattern (Arrange, Act, Assert):** Removed redundant `try/except` blocks that cluttered the code. The structure now strictly follows the *Arrange, Act, and Assert* flow, making tests focused and readable.
+* **Base URL Centralization:** Created dedicated fixtures to manage the API base URL, eliminating string repetition across tests and facilitating seamless transitions between different testing environments.
+* **State Management (Setup/Teardown):** Implemented automated database cleanup routines (`teardown`), ensuring complete independence between test scenarios.
+* **Contract Testing:** Evolved from simple `status_code` and isolated key validations to full structural validation of the response payload using the `jsonschema` library.
 
 ---
 
-# Plano de Testes: Detalhamento do Projeto
+## Test Plan
 
 <details>
-<summary><b>1. Objetivo e Estratégia</b></summary>
+<summary><b>1. Objective and Strategy</b></summary>
 
-* **Objetivo:** Assegurar a qualidade funcional, estabilidade de contrato e confiabilidade dos principais fluxos de negócio da API ServeRest.
-* **Estratégia:** Automação de testes funcionais e de contrato na camada de Back-end (API).
-* **Stack Tecnológica:** Python 3.13.x, Pytest, Requests e JSONSchema.
-* **Escopo Coberto:** Endpoints `/login`, `/usuarios`, `/produtos` e `/carrinhos`.
-* **Fora de Escopo:** Testes de carga, estresse e performance.
+* **Objective:** Ensure functional quality, contract stability, and reliability.
+* **Strategy:** Automation of functional and contract tests at the API layer.
+* **Tech Stack:** Python 3.13.x, Pytest, Requests, and JSONSchema.
+* **Scope:** `/login`, `/usuarios`, `/produtos`, and `/carrinhos` endpoints.
+* **Out of Scope:** Load, stress, and performance testing.
 </details>
 
 <details>
-<summary><b>2. Cenários de Teste Mapeados</b></summary>
+<summary><b>2. Mapped Test Scenarios</b></summary>
 
-* **`test_login.py`**: Suíte de autenticação abrangendo cenários de sucesso e falhas por campos ausentes ou dados inválidos.
-* **`test_usuarios.py`**: CRUD completo (POST, GET, PUT, DELETE) com validações de e-mail duplicado e integridade de dados.
-* **`test_produtos.py`**: CRUD de produtos com validação de tokens de administrador e restrições de campos obrigatórios.
-* **`test_carrinhos.py`**: Gestão de compras, incluindo estoques insuficientes e cancelamento de pedidos com retorno de estoque.
+* **`test_login.py`**: Authentication suite (success and failure scenarios).
+* **`test_usuarios.py`**: Full CRUD operations with email validation.
+* **`test_produtos.py`**: Product management and admin token validation.
+* **`test_carrinhos.py`**: Purchase management, stock constraints, and order cancellation.
 </details>
 
 <details>
 <summary><b>3. Definition of Done (DoD)</b></summary>
 
-Para garantir o padrão de qualidade, cada teste deve atender aos critérios:
-- [x] Nomenclatura padronizada: `test_<action>_<expected_result>`.
-- [x] *Fixtures* centralizadas (`conftest.py`).
-- [x] Massa de dados dinâmica (UUID).
-- [x] Validação estrutural completa via `JSON Schema`.
+- [x] Naming convention: `test_<action>_<expected_result>`.
+- [x] Centralized *fixtures* (`conftest.py`).
+- [x] Dynamic test data (UUID).
+- [x] Full structural validation via `JSON Schema`.
 </details>
 
-## Estrutura do Projeto 
-
-```text
-├── tests/              
-│   ├── conftest.py         # Configurações globais e fixtures
-│   ├── schemas.py          # Definições de JSON Schemas
-│   ├── test_login.py       # Testes de autenticação
-│   ├── test_produtos.py    # Testes do módulo de produtos
-│   ├── test_usuarios.py    # Testes do módulo de usuários
-│   └── test_carrinhos.py   # Testes do módulo de carrinhos
-
+## Project Structure
 ```
---- 
+bootcamp-QA-2026-desafios/
+├── .github/              # CI/CD configurations (Workflows)
+├── tests/                # Centralized test directory (outside of week folders)
+│   ├── __init__.py
+│   ├── conftest.py       # Global fixtures
+│   ├── schemas.py        # JSON Schemas
+│   ├── test_login.py
+│   ├── test_usuarios.py
+│   ├── test_produtos.py
+│   └── test_carrinhos.py
+├── .gitignore            # Important: ignore __pycache__, .venv, .env
+├── README.md
+├── requirements.txt
+└── package.json          # (If there are node dependencies for auxiliary tools)
+```
 
-# Métricas e Resultados
+## Metrics & Results
 
-## Cobertura de Testes (Test Coverage)
+### Test Coverage
+To ensure the robustness and quality of the API, the automation strategy was based on the **Operator Coverage** methodology. This approach measures the extent of tested HTTP methods in relation to the available endpoints.
 
-Para garantir a robustez e a qualidade da API, a estratégia de automação foi baseada na metodologia de **Operator Coverage**, que mede a abrangência dos métodos HTTP testados em relação aos endpoints disponíveis.
+### Operations Coverage Map
 
-### Mapa de Cobertura de Operações
-
-| Endpoint | POST | GET | PUT | DELETE | Total de Operações |
+| Endpoint | POST | GET | PUT | DELETE | Total Operations |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | `/login` | ✅ | - | - | - | 1 |
 | `/usuarios` | ✅ | ✅ | ✅ | ✅ | 4 |
 | `/produtos` | ✅ | ✅ | ✅ | ✅ | 4 |
-| `/carrinhos` | ✅ | - | - | ✅ | 2 |
-| **Totais** | **4** | **2** | **2** | **3** | **11 / 11** |
+| `/carrinhos` | - | - | ✅ | ✅ | 2 |
+| **Totals** | **4** | **2** | **3** | **2** | **11 / 11** |
 
-### Metodologia de Cálculo
-O cálculo foi realizado através da fórmula de *Operator Coverage*:
+### Calculation Methodology
 
-Como a API expõe 11 operações distintas entre os quatro recursos (Login, Usuários, Produtos e Carrinhos) e todos os fluxos foram devidamente automatizados, a suíte alcançou **100% de cobertura de operações**.
+The calculation was performed using the **Operator Coverage** formula:
 
----
-## Qualidade Além da Cobertura
-Além de atingir 100% de cobertura de operadores, a suíte foca na **qualidade das validações**:
+Since the API exposes 11 distinct operations across the four resources (Login, Users, Products, and Carts) and all flows have been properly automated, the test suite has achieved **100% operation coverage**.
 
-* **Status Code Coverage:** Validação de fluxos de sucesso (200, 201) e cenários de erro esperados (400, 401, 403, 404).
-* **JSON Schema Validation:** Garantia de que o contrato da API está sendo respeitado em cada resposta, assegurando que o Front-End receba os dados esperados.
-* **Fluxo de Integração:** Testes que orquestram dependências, como a criação de um produto para uso posterior na criação de um carrinho, simulando o uso real do sistema.
+### Quality Beyond Coverage
+
+Beyond achieving 100% operator coverage, the suite focuses on the quality of validations:
+
+* **Status Code Coverage:** Validation of successful flows (200, 201) and expected error scenarios (400, 401, 403, 404).
+* **JSON Schema Validation:** Guarantee that the API contract is respected in every response, ensuring the Front-End receives the expected data format.
+* **Integration Flows:** Tests that orchestrate dependencies, such as creating a product for subsequent use in cart creation, simulating real-world system usage.
 
 --- 
 
-### Bugs e Inconsistência Encontradas
+### Bugs and Inconsistencies Found
 
-| Severidade | Bug / Inconsistência | Comportamento Esperado | Comportamento Obtido |
-| --- | --- | --- | --- |
-| 🔴 **Crítica** | **Elevação de Privilégio** | O sistema deve impedir que um usuário comum altere seu perfil para `administrador: true`. | O `PUT /usuarios/{id}` aceita a alteração, promovendo o usuário a administrador. |
-| 🔵 **Baixa** | **Inconsistência de Resposta (Payload Vazio)** | Retornar erro de validação padronizado (`400`) em todas as rotas ao receber `{}`. | Retorna `400` em rotas públicas e `401` em rotas privadas para o mesmo payload. |
+| Severity | Bug / Inconsistency | Expected Behavior | Actual Behavior |
+| :--- | :--- | :--- | :--- |
+| 🔴 **Critical** | **Privilege Escalation** | The system must prevent a standard user from changing their profile to `administrador: true`. | The `PUT /usuarios/{id}` endpoint allows the change, promoting the user to administrator. |
+| 🔵 **Low** | **Response Inconsistency (Empty Payload)** | Return a standardized validation error (`400`) on all routes when receiving `{}`. | Returns `400` on public routes and `401` on private routes for the same payload. |
 
 ---
 
-## Principais Desafios e Aprendizados
+## Main Challenges and Lessons Learned
 
-| Desafio | Solução Encontrada |
+| Challenge | Solution |
 | :--- | :--- |
-| **Validação de Contratos (JSON Schema)** | Mapeamento das chaves de erro específicas por campo (ex: `"nome": "nome é obrigatório"`) em vez de chaves genéricas, facilitando o tratamento de erros no Front-End. |
-| **Retorno de Verbos HTTP** | Separação estratégica entre *Schemas* de mutação (apenas `message` e `_id`) e *Schemas* de leitura (objeto completo), ajustando as expectativas das validações. |
-| **Encadeamento de Requisições** | Implementação de fluxos encadeados (POST Produto > Extração de `_id` > Montagem de Payload > POST Carrinho) para respeitar a arquitetura relacional da API. |
-| **Mutabilidade de Dados** | Utilização do método `.copy()` em dicionários para evitar que a manipulação de dados em um teste afetasse o estado original da *fixture* nos testes subsequentes. |
-| **Rigor do Pytest (Nomenclatura)** | Desenvolvimento de leitura crítica dos logs de erro do Pytest para identificar rapidamente desvios de nomenclatura entre fixtures e parâmetros injetados. |
-| **Ambiente de Desenvolvimento** | Reforço da atenção aos indicadores visuais de salvamento de arquivos no VS Code, eliminando falsos positivos causados por execução de código desatualizado. |
+| **Contract Validation (JSON Schema)** | Mapped specific error keys per field (e.g., `"nome": "nome é obrigatório"`) instead of generic keys, facilitating error handling on the Front-End. |
+| **HTTP Verb Response** | Strategic separation between mutation schemas (only `message` and `_id`) and reading schemas (full object), adjusting validation expectations. |
+| **Request Chaining** | Implementation of chained flows (POST Product > Extract `_id` > Build Payload > POST Cart) to respect the API's relational architecture. |
+| **Data Mutability** | Used the `.copy()` method on dictionaries to prevent data manipulation in one test from affecting the original fixture state in subsequent tests. |
+| **Pytest Rigor (Naming)** | Developed a critical reading approach to Pytest error logs to quickly identify naming mismatches between fixtures and injected parameters. |
+| **Development Environment** | Increased attention to visual file-saving indicators in VS Code, eliminating false positives caused by running outdated code. |
 
 ---
 
-## Conclusão
+## Conclusion
 
-O desafio foi um verdadeiro mergulho no que significa, na prática, ser uma Eng. de Qualidade. Conforme o nosso instrutor Jacques Schmitz comentou no nosso 1º Workshop, **"o QA atua em todo o ciclo, como facilitador na vida do time que pode influenciar no design, auxiliar na observabilidade e na questão de como lidar com a massa de dados obtida pelo negócio"**. Entendi que, quando estruturamos testes bem organizados, a missão não é somente encontrar bug mas prevenir que problemas apareçam, ao mesmo tempo que reduz riscos para o negócio. 
+This challenge was a deep dive into what it truly means to be a Quality Engineer in practice. As our instructor Jacques Schmitz mentioned in our 1st Workshop, **"QA acts throughout the entire cycle, acting as a facilitator for the team—influencing design, assisting with observability, and managing how to handle the volume of data generated by the business."** I realized that when we structure well-organized tests, our mission is not just to find bugs, but to prevent problems from arising while simultaneously reducing business risks.
 
-Muito além de apenas automatizar o trabalho manual, estamos construindo uma camada de segurança "para ter tranquilidade e segurança com as mudanças" e "garantir que as mudanças não quebrem outros aspectos do código", é o que afirmou o prof. José Correia, Especialista em Qualidade de Software, no curso Início Rápido em Teste e QA, disponível na Udemy (que estudamos durante a primeira semana de estudos no Bootcamp).
+Far beyond simply automating manual tasks, we are building a safety layer "to have peace of mind and security regarding changes" and to "ensure that changes do not break other aspects of the code," as stated by Professor José Correia, Software Quality Specialist, in the *Início Rápido em Teste e QA* course available on Udemy (which we studied during the first week of the Bootcamp).
 
-A refatoração que realizei nesta quarta semana me trouxe um insight valioso: **qualidade é parte intrínseca da arquitetura e, nós, como QA, devemos atuar em todo o ciclo da aplicação** (conforme indicado pelo raciocínio shift-left), tal questão foi perguntada no nosso Questionário da segunda semana de estudos. Quando tratamos os contratos de API com o mesmo cuidado que tratamos a interface do usuário, fazemos com que todos enxerguem "que qualidade é um esforço de time e importante para o produto", conceito trabalhado por Correia. 
+The refactoring I carried out during this fourth week gave me a valuable insight: **quality is an intrinsic part of architecture, and as QAs, we must act throughout the entire application lifecycle** (as indicated by the shift-left approach), a topic covered in our second-week quiz. When we treat API contracts with the same care that we treat the user interface, we help everyone realize "that quality is a team effort and vital for the product," a concept emphasized by Correia.
 
-Dessa forma, garantimos que o ecossistema inteiro fale a mesma língua. **E pensando em toda essa experiência: Sigo ainda mais motivada e com a bagagem reforçada para aplicar essa visão estratégica em cenários de negócios, exercendo o papel de um membro ativo do projeto que trabalha para aconselhar sobre qualidade.**
+In this way, we ensure that the entire ecosystem speaks the same language. **Reflecting on this entire experience: I feel even more motivated and equipped with a stronger toolkit to apply this strategic vision in business scenarios, acting as an active project member who provides guidance on quality.**
 
 ---
 
-## Referências Utilizadas em Consultas
+## References
 
 * [AAA Pattern in Test Automation - Semaphore CI](https://semaphore.io/blog/aaa-pattern-test-automation)
 * [Pytest Documentation & Best Practices](https://docs.pytest.org/)
 * [Pytest: Help your tests do more](https://docs.pytest.org/en/stable/explanation/goodpractices.html)
-* [Como verificar a cobertura de testes de APIs REST](https://medium.com/revista-dtar/como-verificar-a-cobertura-de-testes-da-api-rest-9e2f745564b)
+* [How to verify REST API test coverage](https://medium.com/revista-dtar/como-verificar-a-cobertura-de-testes-da-api-rest-9e2f745564b)
 * [Test Coverage Criteria for RESTful Web APIs](https://www.researchgate.net/publication/327774902_Test_coverage_criteria_for_RESTful_web_APIs) 
 * [Introduction to Contract Testing](https://martinfowler.com/articles/contract-testing.html)
 * [Understanding JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) 
 
 ---
 
-### Como Executar este Repositório
+### How to Run This Repository
 
-1. **Clone o repositório:**
+1. **Clone the repository:**
 ```bash
 git clone <https://github.com/codebyfernanda/bootcamp-QA-2026-desafios.git>
 cd bootcamp-QA-2026-desafios
 
 ```
 
-2. **Crie e ative um ambiente virtual:**
+2. **Create and activate a virtual environment:**
 
 ```bash
 # Windows
@@ -170,14 +173,14 @@ source venv/bin/activate
 
 ```
 
-3. **Instale as dependências:**
+3. **Install the dependencies:**
 
 ```bash
 pip install -r requirements.txt
 
 ```
 
-4. **Execute os testes:**
+4. **Run the tests:**
 
 ```bash
 pytest -v
@@ -185,13 +188,11 @@ pytest -v
 ```
 ---
 
+## About the Author & Acknowledgments
 
-## Sobre a Autora
+This project was developed by **Fernanda Bastos dos Santos** [(@codebyfernanda)](https://github.com/codebyfernanda), a student of **Analysis and Systems Development** at Mackenzie, during the **BOOTCAMP | AWS AI FDE DRIVEN QUALITY ENGINEERING** hosted by Compass UOL in partnership with [AI/R Company](https://aircompany.ai/).
 
-O presente projeto foi desenvolvido por **Fernanda Bastos dos Santos** [(@codebyfernanda)](https://github.com/codebyfernanda), estudante de **Análise e Desenvolvimento de Sistemas** no Mackenzie, durante o **BOOTCAMP | AWS AI FDE DRIVEN QUALITY ENGINEERING**, da Compass UOL com [AI/R Company](https://aircompany.ai/).
+I would like to express my sincere gratitude to Squad 2 for their engagement, knowledge sharing, and support throughout our bootcamp journey. A special thanks goes to my colleagues [Renan Pacheco](https://github.com/Renanpacheco) and [Vitor Kunicki](https://github.com/vitto2099)—your patience, availability, and guidance were fundamental in helping me overcome the challenges of this delivery. 
 
-## Agradecimentos Especiais
-
-Gostaria de expressar meus agradecimentos à Squad 2 pelo engajamento, por toda troca de conhecimento e, também, pelo suporte durante o processo do nosso Bootcamp. Deixo aqui um agradecimento especial aos meus colegas [Renan Pacheco](https://github.com/Renanpacheco) e [Vitor Kunicki](https://github.com/vitto2099). A paciência, a disponibilidade e o auxílio de vocês foram fundamentais para a superação dos desafios dessa entrega. 
-
-Também gostaria de aproveitar este espaço para registrar os meus agradecimentos aos meus instrutores, Amanda Almeida e [Jacques Schmitz](https://github.com/juniorschmitz), pelo apoio contínuo e a disponibilidade para auxiliar com conteúdos técnicos na formação, e à Scrum Master Leticia Souza, pelo acompanhamento diário e sensibilidade com a nossa trajetória no programa. Muito obrigada! :)
+I would also like to take this opportunity to thank my instructors, Amanda Almeida and [Jacques Schmitz](https://github.com/juniorschmitz), for their continuous support and readiness to help with technical content during our training, as well as our Scrum Master, Leticia Souza, for her daily guidance and sensitivity toward our journey in the program. Thank you so much! :)
+ 
