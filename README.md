@@ -1,4 +1,4 @@
-# Technical Challenge | Bootcamp AWS AI FDE Driven Quality Engineering 
+# Technical Challenge | AWS AI FDE Driven Quality Engineering Bootcamp 
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white" />
