@@ -1,2 +1,8 @@
+# ======= ARQUIVO CRIADO POR FERNANDA BASTOS (@codebyfernanda) =======
+
+Python==3.13.13
 pytest==9.0.3
 requests==2.34.2
+jsonschema==4.26.0 
+
+# ====================================================================
