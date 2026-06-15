@@ -1,0 +1,8 @@
+# ======= FILE CREATED BY FERNANDA BASTOS (@codebyfernanda) =======
+
+pytest==9.0.3
+pytest-schema==0.1.2
+jsonschema==4.26.0
+requests==2.34.2
+
+# =================================================================
