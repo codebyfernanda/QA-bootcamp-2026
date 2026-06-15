@@ -53,26 +53,23 @@ During the [fourth week](https://github.com/codebyfernanda/bootcamp-QA-2026-desa
 - [x] Full structural validation via `JSON Schema`.
 </details>
 
-## Challenge Verification Matrix
+## Delivery Progress Matrix
 
 Below is the comprehensive verification matrix tracking all requirements, architectural deliverables and engineering practices implemented.
 
 | Status | Phase / Focus | Deliverable | Technical Description |
 | :---: | :--- | :--- | :--- |
-| **Done** | **1. Test Planning** | `test-plan_week_004.md` | Comprehensive architectural documentation mapping test suite objectives, tools (Python, Pytest, Requests), execution scope, and explicit completion criteria. |
-| **Done** | | Scenarios Mapping | Exhaustive list of target endpoints, positive paths, negative validations, and contract boundary conditions structured prior to core refactoring. |
-| **Done** | **2. Test Expansion** | Users Endpoint | Maintained and evolved the legacy functional validations from Week 3 incrementally, avoiding regression. |
-| **Done** | | Login Validation | Complete coverage of authentication mechanisms including happy paths, wrong passwords, non-existent entities, and empty fields. |
-| **Done** | | Products Management | Full integration flow covering listing, schema validations, query-by-ID, updates, and cascading teardowns (deletions). |
-| **Done** | | Dynamic Auth Flow | Clean handling of Role-Based Access Control (RBAC), automatically generating and distributing administrator tokens to protected endpoints. |
-| **Done** | **3. Metrics & Reports** | English Execution | Main repository documentation completely written in English, maintaining industry standards for open-source and professional setups. |
-| **Done** | | Coverage Framework | Clear mathematical analysis outlining total endpoints tested vs. available API pathways, using the reference article matrix. |
-| **Done** | | Boundary Definitions | Fully documented constraints, explicitly stating which edge-case responses or third-party scopes were excluded with technical justifications. |
-| **Done** | **4. Defect Tracking** | Real Bugs Discovery | Active scanning of the target infrastructure to reveal unexpected payload exceptions or implicit server crashes. |
-| **Done** | | GitHub Issues | Standardized bug report logs opened on the repository containing clear severity indexing, reproduction steps, expected behaviors, and raw console payloads. |
-| **Done** | **5. Infrastructure** | Contract Verification | Integration of `pytest-schema` validating server payloads against strict architectural data types for at least 3 separate endpoints. |
-| **Done** | | GitHub Actions (CI) | Workflow definitions (`ci.yml`) triggering sandboxed runtime automation instantly on the remote cloud orchestration engine for every push. |
-| **Done** | | Dockerization | Optimized `Dockerfile` (`python:3.12-slim`) with isolated layers caching and `requirements.txt` execution for deterministic, environment-agnostic runs. |
+| 🟢 Done | **1. Planning** | `test-plan_week_004.md` | Comprehensive test strategy, target endpoints and completion criteria. |
+| 🟢 Done | | Scenarios Mapping | Mapped list of target endpoints, positive, negative and validation paths. |
+| 🟢 Done | **2. Test Expansion** | Users & Login | Complete functional CRUD validations for users and multi-scenario authentication lifecycle. |
+| 🟢 Done | | Products Catalog | Integration flows for catalog management, including schema checks and cascading deletions. |
+| 🟢 Done | | Dynamic Auth Flow | Role-Based Access Control (RBAC) handling to auto-distribute tokens to protected endpoints. |
+| 🟢 Done | **3. Metrics** | English Execution | Entire repository documentation internationalized and written standard English. |
+| 🟢 Done | | Coverage Framework | Mathematical analysis tracking tested endpoints against total available API pathways. |
+| 🟢 Done | **4. Defect Tracking**| Real Bugs Discovery | Active scanning of infrastructure, with standardized bug report logs opened on GitHub Issues. |
+| 🟢 Done | **5. Infrastructure**| Contract Verification | API response payload integrity checks using `pytest-schema` across multiple endpoints. |
+| 🟢 Done | | GitHub Actions (CI) | Workflow definitions (`ci.yml`) triggering cloud automation instantly on every push. |
+| 🟢 Done | | Dockerization | Environment isolation using a slim base image with layer caching for fast runtime. |
 
 ---
 
