@@ -1,9 +1,9 @@
-# ======================================== ARQUIVO CRIADO POR FERNANDA BASTOS (@codebyfernanda) ========================================
+# ======================================== FILE CREATED BY FERNANDA BASTOS (@codebyfernanda) ========================================
 
 import requests
 import pytest
 
-# Buscar Produto por ID (GET)
+# Search Product by ID (GET)
 def test_search_product_by_id(my_product_fixture):
     prod_id = my_product_fixture["id"]
     url = f"https://compassuol.serverest.dev/produtos/{prod_id}"
@@ -12,12 +12,14 @@ def test_search_product_by_id(my_product_fixture):
         response = requests.get(url)
         response_body = response.json()
         
-        print(f"\nCorpo da resposta da API (GET em ID existente): {response_body}")
+        print(f"\nAPI response body (GET on existing ID): {response_body}")
         
         assert response.status_code == 200
         assert "_id" in response_body
         assert response_body["_id"] == prod_id
-        print(f"\nStatus retornado para BUSCA DE PRODUTO POR ID COM SUCESSO: {response.status_code}")
+        print(f"\nStatus returned for SUCCESSFUL PRODUCT SEARCH BY ID: {response.status_code}")
         
     except requests.exceptions.RequestException as error_search_product_sucessfully:
-        pytest.fail(f"A API está retornando um erro na busca com sucesso. Erro: {error_search_product_sucessfully}")
+        pytest.fail(f"The API is returning an error upon successful search. Error: {error_search_product_sucessfully}")
+
+# ===================================================================================================================================
