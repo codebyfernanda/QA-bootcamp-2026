@@ -1,13 +1,11 @@
-# ======= ARQUIVO CRIADO POR FERNANDA BASTOS (@codebyfernanda) =======
+# ======= FILE CREATED BY FERNANDA BASTOS (@codebyfernanda) =======
 
 # tests/schemas.py
 
-# ====================================================================
-
-# Schema para POST /usuarios (no caso de "caminho feliz" ou sucesso)
-# Define o contrato de sucesso para a criação de usuários (POST). 
-# Assegura que a API retorne a mensagem de confirmação e o ID gerado, 
-# dados essenciais para o front-end validar a ação.
+# Schema for POST /usuarios (in case of "happy path" or success)
+# Defines the success contract for user creation (POST). 
+# Ensures that the API returns the confirmation message and the generated ID, 
+# essential data for the front-end to validate the action.
 
 create_user_success_schema = {
     "type": "object",
@@ -20,11 +18,10 @@ create_user_success_schema = {
 
 # ====================================================================
 
-# Schema para GET /usuarios/{_id} (no caso de "caminho feliz" ou sucesso)
-# Valida a estrutura completa de retorno de um usuário específico (GET). 
-# Garante que a interface receba os dados corretamente tipados (como a 
-# restrição de strings no administrador), evitando quebras inesperadas 
-# de layout.
+# Schema for GET /usuarios/{_id} (in case of "happy path" or success)
+# Validates the complete return structure of a specific user (GET). 
+# Ensures that the interface receives correctly typed data (such as the 
+# string restriction on administrator), avoiding unexpected layout breaks.
 
 get_user_schema = {
     "type": "object",
@@ -34,7 +31,7 @@ get_user_schema = {
         "password": {"type": "string"},
         "administrador": {
             "type": "string", 
-            "enum": ["true", "false"] # Garantia que o código só vai aceitar essas duas strings
+            "enum": ["true", "false"] # Guarantee that the code will only accept these two strings
         },
         "_id": {"type": "string"}
     },
@@ -43,11 +40,10 @@ get_user_schema = {
 
 # ====================================================================
 
-# Schema para GET /usuarios/{_id} (no caso de "caminho feliz" ou sucesso)
-# Valida a estrutura completa de retorno de um usuário específico (GET). 
-# Garante que a interface receba os dados corretamente tipados (como a 
-# restrição de strings no administrador), evitando quebras inesperadas 
-# de layout.
+# Schema for GET /usuarios/{_id} (in case of "happy path" or success)
+# Validates the complete return structure of a specific user (GET). 
+# Ensures that the interface receives correctly typed data (such as the 
+# string restriction on administrator), avoiding unexpected layout breaks.
 
 get_user_by_id_schema = {
     "type": "object",
@@ -63,10 +59,10 @@ get_user_by_id_schema = {
 
 # ====================================================================
 
-# Schema para Login Error (401/404) e campos ausentes (400)
-# Padroniza o contrato de exceção para falhas de autenticação (401/404).
-# Assegura que a API devolva a chave de mensagem correta, permitindo
-# exibir o feedback visual de acesso negado na UI com segurança.
+# Schema for Login Error (401/404) and missing fields (400)
+# Standardizes the exception contract for authentication failures (401/404).
+# Ensures that the API returns the correct message key, allowing the 
+# secure display of visual access denied feedback in the UI.
 
 login_error_schema = {
     "type": "object",
@@ -78,10 +74,10 @@ login_error_schema = {
 
 # ====================================================================
 
-# Schemas para validação de campos ausentes no Cadastro (Erro 400)
-# Verifica o contrato de erro (400) quando o campo "nome" é omitido no 
-# cadastro. Garante que a resposta mapeie a falha exatamente na chave 
-# correspondente, ideal para sinalizar o erro diretamente no input.
+# Schemas for validation of missing fields in Registration (Error 400)
+# Verifies the error contract (400) when the "nome" field is omitted in the 
+# registration. Ensures that the response maps the failure exactly to the 
+# corresponding key, ideal for signaling the error directly on the input.
 
 missing_name_schema = {
     "type": "object",
@@ -91,9 +87,9 @@ missing_name_schema = {
 
 # ====================================================================
 
-#Valida a estrutura de resposta (400) para a ausência de e-mail no 
-# registro. Assegura que o erro retorne na chave "email", facilitando o
-# tratamento de exceções e a clareza na interface do usuário.
+# Validates the response structure (400) for the absence of email in the 
+# registration. Ensures that the error returns in the "email" key, facilitating 
+# exception handling and clarity in the user interface.
 
 missing_email_schema = {
     "type": "object",
@@ -103,9 +99,9 @@ missing_email_schema = {
 
 # ====================================================================
 
-# Confirma o contrato de exceção focado na falta do campo de senha (400).
-# Garante que a API aponte o erro na chave correta, fundamental para a
-# experiência do usuário ao tentar concluir formulários de cadastro.
+# Confirms the exception contract focused on the missing password field (400).
+# Ensures that the API points out the error in the correct key, which is 
+# fundamental for the user experience when trying to complete registration forms.
 
 missing_password_schema = {
     "type": "object",
@@ -115,9 +111,9 @@ missing_password_schema = {
 
 # ====================================================================
 
-# Define a estrutura de erro para a omissão da flag de administrador (400). 
-# Assegura que a requisição informe com precisão o campo faltante, mantendo 
-# a consistência dos contratos de tela.
+# Defines the error structure for the omission of the administrator flag (400). 
+# Ensures that the request precisely informs the missing field, maintaining 
+# the consistency of the UI contracts.
 
 missing_administrator_schema = {
     "type": "object",
@@ -127,10 +123,10 @@ missing_administrator_schema = {
 
 # ====================================================================
 
-# Schema para POST /usuarios (no caso de "caminho feliz" ou sucesso)
-# Define o contrato de sucesso para a criação de usuários (POST). 
-# Assegura que a API retorne a mensagem de confirmação e o ID gerado, 
-# dados essenciais para o front-end validar a ação.
+# Schema for POST /usuarios (in case of "happy path" or success)
+# Defines the success contract for user creation (POST). 
+# Ensures that the API returns the confirmation message and the generated ID, 
+# essential data for the front-end to validate the action.
 
 create_user_success_schema = {
     "type": "object",
@@ -143,9 +139,9 @@ create_user_success_schema = {
 
 # ====================================================================
 
-# Schema para POST /usuarios
-# Define o contrato de erro para a criação de usuários (POST) com 
-# email duplicado. Assegura que a API retorne a mensagem de erro.
+# Schema for POST /usuarios
+# Defines the error contract for user creation (POST) with a duplicated 
+# email. Ensures that the API returns the error message.
 
 duplicated_email_schema = { 
     "type": "object",
@@ -157,9 +153,9 @@ duplicated_email_schema = {
 
 # ====================================================================
 
-# Schema para GET /usuarios (Listar todos)
-# Assegura que a API retorne a quantidade de usuários e uma lista 
-# com os dados completos de cada um, validando o contrato de exibição.
+# Schema for GET /usuarios (List all)
+# Ensures that the API returns the amount of users and a list with 
+# the complete data of each one, validating the display contract.
 
 list_all_users_schema = {
     "type": "object",
@@ -188,9 +184,9 @@ list_all_users_schema = {
 
 # ====================================================================
 
-# Schema para PUT /usuarios
-# Valida a resposta de sucesso (200) após a atualização de um usuário,
-# garantindo que a mensagem de confirmação seja recebida corretamente.
+# Schema for PUT /usuarios
+# Validates the success response (200) after updating a user,
+# ensuring that the confirmation message is correctly received.
 
 update_user_schema = {
     "type": "object",
@@ -202,9 +198,9 @@ update_user_schema = {
 
 # ====================================================================
 
-# Schema para PUT /usuarios (email duplicado)
-# Valida a resposta de erro (400) ao tentar atualizar um usuário com
-# um e-mail já existente no sistema.
+# Schema for PUT /usuarios (duplicated email)
+# Validates the error response (400) when trying to update a user with
+# an email that already exists in the system.
 
 duplicated_email_update_user_schema = { 
     "type": "object",
@@ -216,10 +212,10 @@ duplicated_email_update_user_schema = {
 
 # ====================================================================
 
-# Schema para POST /produtos
-# Valida a resposta de sucesso (201) após a criação de um produto,
-# garantindo que a mensagem de confirmação e o ID gerado sejam recebidos 
-# corretamente.
+# Schema for POST /produtos
+# Validates the success response (201) after creating a product,
+# ensuring that the confirmation message and the generated ID are correctly 
+# received.
 
 create_product_success_schema = {
     "type": "object",
@@ -232,10 +228,9 @@ create_product_success_schema = {
 
 # ====================================================================
 
-# Schema para POST /produtos (nome ausente)
-# Valida a resposta de erro (400) ao tentar criar um produto sem 
-# informar o campo "nome", garantindo que a validação do servidor seja
-# acionada.
+# Schema for POST /produtos (missing name)
+# Validates the error response (400) when trying to create a product without 
+# providing the "nome" field, ensuring that the server validation is triggered.
 
 missing_product_name_schema = {
     "type": "object",
@@ -247,9 +242,9 @@ missing_product_name_schema = {
 
 # ====================================================================
 
-# Schema para POST /produtos (preço ausente)
-# Valida a resposta de erro (400) ao tentar criar um produto sem 
-# informar o campo "preco", garantindo que a validação do servidor seja acionada.
+# Schema for POST /produtos (missing price)
+# Validates the error response (400) when trying to create a product without 
+# providing the "preco" field, ensuring that the server validation is triggered.
 
 missing_product_price_schema = { 
     "type": "object",
@@ -261,10 +256,9 @@ missing_product_price_schema = {
 
 # ====================================================================
 
-# Schema para POST /produtos (descrição ausente)
-# Valida a resposta de erro (400) ao tentar criar um produto sem 
-# informar o campo "descricao", garantindo que a validação do servidor seja 
-# acionada.
+# Schema for POST /produtos (missing description)
+# Validates the error response (400) when trying to create a product without 
+# providing the "descricao" field, ensuring that the server validation is triggered.
 
 missing_product_description_schema = {
     "type": "object",
@@ -276,10 +270,10 @@ missing_product_description_schema = {
 
 # ====================================================================
 
-# Schema para GET /produtos
-# Valida a resposta de sucesso (200) após a listagem de produtos,
-# garantindo que a quantidade e a lista de produtos sejam recebidas 
-# corretamente.
+# Schema for GET /produtos
+# Validates the success response (200) after listing products,
+# ensuring that the quantity and the product list are correctly 
+# received.
 
 list_all_products_schema = {
     "type": "object",
@@ -305,10 +299,10 @@ list_all_products_schema = {
 
 # ====================================================================
 
-# Schema para POST /carrinhos
-# Valida a resposta de sucesso (201) após a criação de um carrinho,
-# garantindo que a mensagem de confirmação e o ID gerado sejam recebidos 
-# corretamente.
+# Schema for POST /carrinhos
+# Validates the success response (201) after creating a cart,
+# ensuring that the confirmation message and the generated ID are correctly 
+# received.
 
 create_cart_successfully_schema = {
     "type": "object",

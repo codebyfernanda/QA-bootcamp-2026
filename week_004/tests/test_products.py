@@ -1,8 +1,8 @@
-# ======= ARQUIVO CRIADO POR FERNANDA BASTOS (@codebyfernanda) =======
+# ======= FILE CREATED BY FERNANDA BASTOS (@codebyfernanda) =======
 
-# test_produtos.py
-# Módulo responsável por executar os testes de Produtos e CRUD
-# Contendo 9 testes
+# test_products.py
+# Module responsible for executing Product and CRUD tests
+# 9 tests
 
 import requests
 from jsonschema import validate
@@ -15,9 +15,9 @@ from tests.schemas import (
 )
 
 # test_create_product_successfully_with_admin_token (POST - 200 / 201)
-# Valida o fluxo completo de cadastro de um novo produto, garantindo 
-# que o retorno seja 200/201, que o contrato seja respeitado e que 
-# o produto seja removido ao final do teste.
+# Validates the complete registration flow of a new product, ensuring 
+# that the response is 200/201, that the contract is respected, and that 
+# the product is removed at the end of the test.
 
 def test_create_product_successfully_with_admin_token(products_url, valid_product_payload, admin_auth_headers):
     payload = valid_product_payload
@@ -39,8 +39,8 @@ def test_create_product_successfully_with_admin_token(products_url, valid_produc
 # ====================================================================
 
 # test_create_product_without_admin_token (POST - 401 / 403)
-# Tenta criar um produto sem token de autenticação válido, 
-# validando o bloqueio de acesso.
+# Tries to create a product without a valid authentication token, 
+# validating the access restriction.
 
 def test_create_product_without_admin_token(products_url, valid_product_payload):
     payload = valid_product_payload
@@ -50,7 +50,7 @@ def test_create_product_without_admin_token(products_url, valid_product_payload)
 
     assert response.status_code in [401, 403]
     
-    # CORREÇÃO 1: String atualizada para bater exatamente com a resposta da API
+    # CORRECTION 1: String updated to exactly match the API response
     assert response_body["message"] == "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
     validate(instance=response_body, schema=login_error_schema)
@@ -58,11 +58,11 @@ def test_create_product_without_admin_token(products_url, valid_product_payload)
 # ====================================================================
 
 # test_create_product_without_name (POST - 400)
-# Tenta cadastrar um produto sem informar o campo "nome", 
-# validando o bloqueio e a mensagem de erro.
+# Tries to register a product without providing the "nome" field, 
+# validating the restriction and the error message.
 
 def test_create_product_without_name(products_url, admin_auth_headers, valid_product_payload):
-    # Usando .copy() para não modificar a fixture original
+    # Using .copy() to avoid modifying the original fixture
     payload = valid_product_payload.copy()
     payload.pop("nome")
     
@@ -71,7 +71,7 @@ def test_create_product_without_name(products_url, admin_auth_headers, valid_pro
 
     assert response.status_code == 400
     
-    # Buscando a chave "nome" em vez de "message"
+    # Looking for the "nome" key instead of "message"
     assert "nome" in response_body
     assert response_body["nome"] == "nome é obrigatório"
 
@@ -80,8 +80,8 @@ def test_create_product_without_name(products_url, admin_auth_headers, valid_pro
 # ====================================================================
 
 # test_create_product_without_price (POST - 400)
-# Tenta cadastrar um produto sem informar o campo "preço", 
-# validando o bloqueio e a mensagem de erro.
+# Tries to register a product without providing the "preco" field, 
+# validating the restriction and the error message.
 
 def test_create_product_without_price(products_url, admin_auth_headers, valid_product_payload):
     payload = valid_product_payload.copy()
@@ -100,8 +100,8 @@ def test_create_product_without_price(products_url, admin_auth_headers, valid_pr
 # ====================================================================
 
 # test_create_product_without_description (POST - 400)
-# Tenta cadastrar um produto sem informar o campo "descrição", 
-# validando o bloqueio e a mensagem de erro.
+# Tries to register a product without providing the "descricao" field, 
+# validating the restriction and the error message.
 
 def test_create_product_without_description(products_url, admin_auth_headers, valid_product_payload):
     payload = valid_product_payload.copy()
@@ -120,23 +120,23 @@ def test_create_product_without_description(products_url, admin_auth_headers, va
 # ====================================================================
 
 # test_search_product_by_id (GET - 200)
-# Valida a busca de um produto pelo ID, garantindo que o GET retorne 200
-# e que o contrato seja respeitado.
+# Validates product search by ID, ensuring that the GET returns 200
+# and that the contract is respected.
 
 def test_search_product_by_id(products_url, admin_auth_headers, valid_product_payload):
     payload = valid_product_payload.copy()
 
-    # Cria o produto
+    # Creates the product
     create_response = requests.post(products_url, json=payload, headers=admin_auth_headers)
     assert create_response.status_code in [200, 201]
 
     product_id = create_response.json()["_id"]
     
-    # Busca o produto
+    # Searches for the product
     get_response = requests.get(f"{products_url}/{product_id}")
     assert get_response.status_code == 200
 
-    # AQUI: Se você quiser validar a busca, precisará de um get_product_schema
+    # HERE: If you want to validate the search, you will need a get_product_schema
     # validate(instance=get_response.json(), schema=get_product_schema)
 
     # Teardown
@@ -145,20 +145,20 @@ def test_search_product_by_id(products_url, admin_auth_headers, valid_product_pa
 # ====================================================================
 
 # test_update_product_with_token (PUT - 200)
-# Valida a atualização de um produto pelo ID, garantindo que o PUT retorne 200
-# e que o contrato seja respeitado.
+# Validates product update by ID, ensuring that the PUT returns 200
+# and that the contract is respected.
 
 def test_update_product_with_token(products_url, admin_auth_headers, valid_product_payload):
     payload = valid_product_payload.copy()
 
-    # Cria o produto
+    # Creates the product
     create_response = requests.post(products_url, json=payload, headers=admin_auth_headers)
     product_id = create_response.json()["_id"]
 
-    # Altera o nome no payload
+    # Changes the name in the payload
     payload["nome"] = "Produto Atualizado Automatizado"
 
-    # Atualiza o produto
+    # Updates the product
     put_response = requests.put(f"{products_url}/{product_id}", json=payload, headers=admin_auth_headers)
     assert put_response.status_code == 200
     assert put_response.json()["message"] == "Registro alterado com sucesso"
@@ -169,21 +169,21 @@ def test_update_product_with_token(products_url, admin_auth_headers, valid_produ
 # ====================================================================
 
 # test_update_product_without_token (PUT - 401)
-# Tenta atualizar um produto sem informar o campo "nome", 
-# validando o bloqueio e a mensagem de erro.
+# Tries to update a product without providing a token, 
+# validating the restriction and the error message.
 
 def test_update_product_without_token(products_url, valid_product_payload, admin_auth_headers):
     payload = valid_product_payload.copy()
     
-    # 1. Cria um produto válido (PRECISA DO TOKEN AQUI)
+    # 1. Creates a valid product (REQUIRES THE TOKEN HERE)
     create_response = requests.post(products_url, json=payload, headers=admin_auth_headers)
     product_id = create_response.json()["_id"]
 
-    # 2. Tenta atualizar ESSE produto específico, mas SEM mandar o header de token
+    # 2. Tries to update THIS specific product, but WITHOUT sending the token header
     put_response = requests.put(f"{products_url}/{product_id}", json=payload)
     put_response_body = put_response.json()
 
-    # 3. Validações
+    # 3. Validations
     assert put_response.status_code in [401, 403]
     assert put_response_body["message"] == "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
     
@@ -195,8 +195,8 @@ def test_update_product_without_token(products_url, valid_product_payload, admin
 # ====================================================================
 
 # test_delete_product_successfully (DELETE - 200)
-# Valida a exclusão de um produto pelo ID, garantindo que o DELETE retorne 200
-# e que o contrato seja respeitado.
+# Validates product deletion by ID, ensuring that the DELETE returns 200
+# and that the contract is respected.
 
 def test_delete_product_successfully(products_url, admin_auth_headers, valid_product_payload):
     payload = valid_product_payload.copy()
@@ -207,3 +207,5 @@ def test_delete_product_successfully(products_url, admin_auth_headers, valid_pro
     delete_response = requests.delete(f"{products_url}/{product_id}", headers=admin_auth_headers)
     assert delete_response.status_code == 200
     assert delete_response.json()["message"] == "Registro excluído com sucesso"
+
+# ====================================================================

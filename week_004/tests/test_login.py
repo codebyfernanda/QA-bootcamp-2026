@@ -1,8 +1,8 @@
-# ======= ARQUIVO CRIADO POR FERNANDA BASTOS (@codebyfernanda) =======
+# ======= FILE CREATED BY FERNANDA BASTOS (@codebyfernanda) =======
 
 # test_login.py
-# Módulo responsável por executar os testes de Login e Autenticação
-# Contendo 7 testes
+# Module responsible for executing Login and Authentication tests
+# 7 tests
 
 import requests
 from jsonschema import validate
@@ -16,45 +16,45 @@ from tests.schemas import (
 )
 
 # test_login_successfully (POST - 201)
-# Valida o fluxo completo de criação de usuário com sucesso (POST). 
-# Garante o retorno de status 201, a validação estrita do contrato (schema) 
-# e realiza a limpeza (teardown) do banco ao final.
+# Validates the complete flow of successful user creation (POST). 
+# Ensures a 201 status code response, strict contract validation (schema), 
+# and performs database cleanup (teardown) at the end.
 
-# Criando usuário com sucesso (201)
+# Successfully creating a user (201)
 def test_create_user_successfully(base_url, valid_user_payload):
     payload = valid_user_payload
 
-    # Ação
+    # Action
     response = requests.post(f"{base_url}/usuarios", json=payload)
     response_body = response.json()
 
-    # Validações mais assertivas, por assim dizer
+    # More assertive validations, so to speak
     assert response.status_code == 201
     assert response_body["message"] == "Cadastro realizado com sucesso"
     
-    # Validação de Contrato (Schema)
+    # Contract Validation (Schema)
     validate(instance=response_body, schema=create_user_success_schema)
 
-    # Teardown: Excluir o usuário recém-criado para não sujar o banco
+    # Teardown: Delete the newly created user to keep the database clean
     user_id = response_body["_id"]
     requests.delete(f"{base_url}/usuarios/{user_id}")
 
 # ====================================================================
 
 # test_login_invalid_password (POST - 401)
-# Testa a camada de segurança da autenticação na rota /login. 
-# Garante que o sistema barre o acesso e retorne 401 com mensagem 
-# de erro genérica ao receber uma senha incorreta.
+# Tests the authentication security layer on the /login route. 
+# Ensures that the system blocks access and returns 401 with a generic 
+# error message when receiving an incorrect password.
 
 def test_login_invalid_password(base_url, invalid_password_payload):
-    # Payload exclusivo para login (com um e-mail que não existe ou senha errada)
+    # Exclusive payload for login (with a non-existent email or wrong password)
     payload = invalid_password_payload
 
-    # Ação: Fazendo a requisição para a rota /login
+    # Action: Making the request to the /login route
     response = requests.post(f"{base_url}/login", json=payload)
     response_body = response.json()
 
-    # Validações: Aqui sim a API deve barrar o acesso
+    # Validations: Here the API must block access
     assert response.status_code == 401
     assert response_body["message"] == "Email e/ou senha inválidos"
 
@@ -63,19 +63,19 @@ def test_login_invalid_password(base_url, invalid_password_payload):
 # ====================================================================
 
 # test_login_nonexistent_user (POST - 404)
-# Valida o bloqueio de login para e-mails não cadastrados. Confirma 
-# o retorno de status de erro adequado (401/404) e a mensagem esperada 
-# para impedir acesso indevido.
+# Validates login blocking for unregistered emails. Confirms 
+# the appropriate error status code (401/404) and the expected message 
+# to prevent unauthorized access.
 
 def test_login_nonexistent_user(base_url, invalid_email_payload):
-    # Payload exclusivo para login (com um e-mail que não existe ou senha errada)
+    # Exclusive payload for login (with a non-existent email or wrong password)
     payload = invalid_email_payload
 
-    # Ação: Fazendo a requisição para a rota /login
+    # Action: Making the request to the /login route
     response = requests.post(f"{base_url}/login", json=payload)
     response_body = response.json()
 
-    # Validações: Aqui sim a API deve barrar o acesso
+    # Validations: Here the API must block access
     assert response.status_code in [401, 404]
     assert response_body["message"] in ["Usuário não encontrado", "Email e/ou senha inválidos"]
 
@@ -84,22 +84,22 @@ def test_login_nonexistent_user(base_url, invalid_email_payload):
 # ====================================================================
 
 # test_login_without_name (POST - 400)
-# Verifica a obrigatoriedade do campo "nome" na rota de cadastro (/usuarios). 
-# Garante que a API recusa a requisição com status 400 e indica especificamente 
-# a chave faltante.
+# Verifies the requirement of the "nome" field on the registration route (/usuarios). 
+# Ensures that the API rejects the request with a 400 status and specifically 
+# indicates the missing key.
 
 def test_login_without_name(base_url, login_user_without_name_payload):
-    # Payload para criação de usuário, mas de propósito sem a chave "nome"
+    # Payload for user creation, intentionally missing the "nome" key
     payload = login_user_without_name_payload
 
-    # Ação: Fazendo a requisição para a rota de CADASTRO (/usuarios)
+    # Action: Making the request to the REGISTRATION route (/usuarios)
     response = requests.post(f"{base_url}/usuarios", json=payload)
     response_body = response.json()
 
-    # Validações: A API retorna 400 e indica que o campo "nome" faltou
+    # Validations: The API returns 400 and indicates that the "nome" field was missing
     assert response.status_code == 400
     
-    # Em vez de "message", buscamos a chave "nome"
+    # Instead of "message", we look for the "nome" key
     assert "nome" in response_body
     assert response_body["nome"] == "nome é obrigatório"
 
@@ -108,9 +108,9 @@ def test_login_without_name(base_url, login_user_without_name_payload):
 # ====================================================================
 
 # test_login_without_email (POST - 400)
-#  Valida a regra de negócio que exige o campo "email" na criação de usuário. 
-# Confirma o bloqueio (status 400) e a mensagem de erro vinculada exatamente 
-# à ausência desse dado.
+# Validates the business rule that requires the "email" field in user creation. 
+# Confirms the restriction (status 400) and the error message linked exactly 
+# to the absence of this data.
 
 def test_login_without_email(base_url, login_user_without_email_payload):
     payload = login_user_without_email_payload
@@ -126,9 +126,9 @@ def test_login_without_email(base_url, login_user_without_email_payload):
 # ====================================================================
 
 # test_login_without_password (POST - 400)
-# Testa a restrição estrutural garantindo que a "password" é indispensável no
-# payload de cadastro. Assegura o retorno 400 com o alerta focado no campo 
-# da senha.
+# Tests the structural constraint ensuring that "password" is indispensable in the
+# registration payload. Ensures a 400 return with the alert focused on the 
+# password field.
 
 def test_login_without_password(base_url, login_user_without_password_payload):
     payload = login_user_without_password_payload
@@ -144,9 +144,9 @@ def test_login_without_password(base_url, login_user_without_password_payload):
 # ====================================================================
 
 # test_login_without_administrator (POST - 400) 
-# Confirma que a flag "administrador" não pode ser omitida na requisição de criação. 
-# Valida o status 400 e a clareza da resposta da API ao apontar o erro no campo 
-# correspondente.
+# Confirms that the "administrador" flag cannot be omitted in the creation request. 
+# Validates the 400 status and the clarity of the API response when pointing out 
+# the error in the corresponding field.
 
 def test_login_without_administrator(base_url, login_user_without_administrator_payload): 
     payload = login_user_without_administrator_payload

@@ -1,59 +1,56 @@
-# ======= ARQUIVO CRIADO POR FERNANDA BASTOS (@codebyfernanda) =======
+# ======= FILE CREATED BY FERNANDA BASTOS (@codebyfernanda) =======
 
 # conftest.py
-# Importações de infraestrutura responsável por fornecer a URL base e a massa 
-# de dados (fixtures) para os testes automatizados da API.
+# Infrastructure imports responsible for providing the base URL and the 
+# test data (fixtures) for the automated API tests.
 
 import requests
 import pytest
 import uuid
 
 # base_url
-# Centraliza e retorna a URL raiz da API ServeRest, garantindo que 
-# alterações de ambiente reflitam automaticamente em todos os testes.
+# Centralizes and returns the root URL of the ServeRest API, ensuring that 
+# environment changes automatically reflect in all tests.
 
 @pytest.fixture
 def base_url():
     return "https://compassuol.serverest.dev"
 
-# ====================================================================
+# =================================================================
 
 # user_url
-# Centraliza e retorna a URL da rota /usuarios da API ServeRest, 
-# garantindo que alterações de ambiente reflitam automaticamente 
-# nos testes.
+# Centralizes and returns the URL of the /usuarios route of the ServeRest API, 
+# ensuring that environment changes automatically reflect in the tests.
 
 @pytest.fixture
 def user_url():
     return "https://compassuol.serverest.dev/usuarios"
 
-# ====================================================================
+# =================================================================
 
 # products_url
-# Centraliza e retorna a URL da rota /produtos da API ServeRest, 
-# garantindo que alterações de ambiente reflitam automaticamente 
-# nos testes.
+# Centralizes and returns the URL of the /produtos route of the ServeRest API, 
+# ensuring that environment changes automatically reflect in the tests.
 
 @pytest.fixture
 def products_url():
     return "https://compassuol.serverest.dev/produtos"
 
-# ====================================================================
+# =================================================================
 
 # carts_url
-# Centraliza e retorna a URL da rota /carrinhos da API ServeRest, 
-# garantindo que alterações de ambiente reflitam automaticamente 
-# nos testes.
+# Centralizes and returns the URL of the /carrinhos route of the ServeRest API, 
+# ensuring that environment changes automatically reflect in the tests.
 
 @pytest.fixture
 def carts_url():
     return "https://compassuol.serverest.dev/carrinhos"
 
-# ====================================================================
+# =================================================================
 
-# valid_user_payload ("Caminho Feliz")
-# Retorna um payload de cadastro válido e completo, utilizando UUID 
-# para gerar um e-mail dinâmico e evitar conflitos de dados no banco.
+# valid_user_payload ("Happy Path")
+# Returns a valid and complete registration payload, using UUID 
+# to generate a dynamic email and avoid data conflicts in the database.
 
 @pytest.fixture
 def valid_user_payload():
@@ -64,11 +61,11 @@ def valid_user_payload():
         "administrador": "true"
     }
 
-# ====================================================================
+# =================================================================
 
-# invalid_password_payload (Senha Inválida - Erro 401)
-# Fornece uma massa de dados exclusiva para a rota /login, enviando 
-# intencionalmente credenciais incorretas para validar o bloqueio de acesso.
+# invalid_password_payload (Invalid Password - Error 401)
+# Provides an exclusive dataset for the /login route, intentionally 
+# sending incorrect credentials to validate access restriction.
 
 @pytest.fixture 
 def invalid_password_payload():
@@ -79,11 +76,11 @@ def invalid_password_payload():
         "administrador": "true"
     }
 
-# ====================================================================
+# =================================================================
 
-# invalid_password_payload (Erro 401)
-# Fornece uma massa de dados exclusiva para a rota /login, enviando 
-# intencionalmente credenciais incorretas para validar o bloqueio de acesso.
+# invalid_password_payload (Error 401)
+# Provides an exclusive dataset for the /login route, intentionally 
+# sending incorrect credentials to validate access restriction.
 
 @pytest.fixture
 def invalid_password_payload(): 
@@ -92,11 +89,11 @@ def invalid_password_payload():
         "password": "senha_incorreta"
     }
 
-# ====================================================================
+# =================================================================
 
-# invalid_email_payload (Erro 404/401)
-# Retorna um payload de login contendo um e-mail não registrado no sistema,
-# permitindo testar as respostas de segurança contra enumeração de usuários.
+# invalid_email_payload (Error 404/401)
+# Returns a login payload containing an email not registered in the system,
+# allowing testing of security responses against user enumeration.
 
 @pytest.fixture
 def invalid_email_payload(): 
@@ -105,11 +102,11 @@ def invalid_email_payload():
         "password": "Teste!123"
     } 
 
-# ====================================================================
+# =================================================================
 
-# login_user_without_name_payload (Erro 400)
-# Massa de dados estruturada para cadastro (/usuarios) omitindo propositalmente 
-# a chave obrigatória "nome", visando testar a validação de campos do servidor.
+# login_user_without_name_payload (Error 400)
+# Dataset structured for registration (/usuarios) intentionally omitting 
+# the mandatory "nome" key, aiming to test server-side field validation.
 
 @pytest.fixture 
 def login_user_without_name_payload():
@@ -119,11 +116,11 @@ def login_user_without_name_payload():
         "administrador": "true"
     }
 
-# ====================================================================
+# =================================================================
 
-# login_user_without_email_payload (Erro 400)
-# Payload de cadastro que exclui intencionalmente a chave "email" para 
-# garantir que a API acione a exceção correta (Bad Request).
+# login_user_without_email_payload (Error 400)
+# Registration payload that intentionally excludes the "email" key to 
+# ensure the API triggers the correct exception (Bad Request).
 
 @pytest.fixture
 def login_user_without_email_payload(): 
@@ -133,11 +130,11 @@ def login_user_without_email_payload():
         "administrador": "true"
     }
 
-# ====================================================================
+# =================================================================
 
-# login_user_without_password_payload (Erro 400)
-# Fornece dados incompletos de criação de usuário, sem a chave "password",
-# para validar a rigidez estrutural do contrato de cadastro.
+# login_user_without_password_payload (Error 400)
+# Provides incomplete user creation data, without the "password" key,
+# to validate the structural rigidity of the registration contract.
 
 @pytest.fixture
 def login_user_without_password_payload(): 
@@ -147,11 +144,11 @@ def login_user_without_password_payload():
         "administrador": "true"
     }
 
-# ====================================================================
+# =================================================================
 
-# login_user_without_administrator_payload (Erro 400)
-# Retorna um payload de registro ausente da flag "administrador", 
-# atestando que o back-end exige a definição hierárquica do usuário.
+# login_user_without_administrator_payload (Error 400)
+# Returns a registration payload missing the "administrador" flag, 
+# attesting that the back-end requires the user's hierarchical definition.
 
 @pytest.fixture
 def login_user_without_administrator_payload():
@@ -161,11 +158,11 @@ def login_user_without_administrator_payload():
         "password": "Teste!123",
     }
 
-# ====================================================================
+# =================================================================
 
-# duplicated_email_user_payload (Erro 400)
-# Fornece dados duplicados de criação de usuário, sem a chave "password",
-# para validar a rigidez estrutural do contrato de cadastro.
+# duplicated_email_user_payload (Error 400)
+# Provides data for duplicate user creation to validate the 
+# structural rigidity of the registration contract.
 
 @pytest.fixture
 def duplicated_email_user_payload():
@@ -176,19 +173,19 @@ def duplicated_email_user_payload():
         "administrador": "true"
     }
 
-# ====================================================================
+# =================================================================
 
-# admin_auth_headers (Token Válido)
-# Gera automaticamente um token JWT válido, criando um usuário administrador 
-# temporário apenas para obter a chave de autenticação necessária para os testes. 
+# admin_auth_headers (Valid Token)
+# Automatically generates a valid JWT token, creating a temporary administrator 
+# user just to get the authorization key needed for the tests. 
 
 @pytest.fixture
 def admin_auth_headers(base_url, valid_user_payload):
-    # 1. Cria o usuário administrador temporário
+    # 1. Creates the temporary administrator user
     create_response = requests.post(f"{base_url}/usuarios", json=valid_user_payload)
     user_id = create_response.json()["_id"]
 
-    # 2. Faz o login para pegar o token gerado pela API
+    # 2. Logs in to get the token generated by the API
     login_payload = {
         "email": valid_user_payload["email"],
         "password": valid_user_payload["password"]
@@ -196,18 +193,18 @@ def admin_auth_headers(base_url, valid_user_payload):
     login_response = requests.post(f"{base_url}/login", json=login_payload)
     token = login_response.json()["authorization"]
 
-    # 3. Entrega os headers prontos (YIELD)
+    # 3. Delivers the headers (YIELD)
     headers = {"Authorization": token}
     yield headers
 
-    # 4. Teardown: Deleta o usuário admin ao final
+    # 4. Teardown: Deletes the admin user at the end
     requests.delete(f"{base_url}/usuarios/{user_id}")
 
-# ====================================================================
+# =================================================================
 
 # valid_product_payload
-# Massa de dados estruturada para cadastro (/usuarios) omitindo propositalmente 
-# a chave obrigatória "nome", visando testar a validação de campos do servidor.
+# Data structure for product registration used to validate the product 
+# insertion flows.
 
 @pytest.fixture 
 def valid_product_payload():
@@ -218,11 +215,10 @@ def valid_product_payload():
         "quantidade": 10
     }
 
-# ====================================================================
+# =================================================================
 
 # novo_usuario
-# Massa de dados estruturada para cadastro (/usuarios) omitindo propositalmente 
-# a chave obrigatória "nome", visando testar a validação de campos do servidor.
+# Data structure for testing user insertion and updates in the system.
 
 novo_usuario = {
         "nome": "Fernanda Teste Update",
@@ -231,11 +227,11 @@ novo_usuario = {
         "administrador": "true"
     }
 
-# ====================================================================
+# =================================================================
 
 # update_payload
-# Payload utilizado no método PUT, fornecendo dados de atualização
-# do usuário criado. 
+# Payload used in the PUT method, providing update data for the 
+# created user. 
 
 @pytest.fixture
 def update_payload():
@@ -246,15 +242,15 @@ def update_payload():
         "administrador": "true"
     }
 
-# ====================================================================
+# =================================================================
 
 # payload_factory
-# Payload utilizado no método PUT, fornecendo dados de atualização
-# do usuário criado. 
+# Factory fixture used to dynamically build cart payloads for the 
+# POST /carrinhos endpoint.
 
 @pytest.fixture
 def payload_factory():
-    # Adicione o segundo parâmetro 'quantidade' aqui
+    # Add the second parameter 'quantidade' here
     def _criar(product_id, quantidade):
         return {
             "produtos": [
@@ -266,5 +262,4 @@ def payload_factory():
         }
     return _criar
 
-# ====================================================================
-
+# =================================================================
