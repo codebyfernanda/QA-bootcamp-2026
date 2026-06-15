@@ -1,35 +1,31 @@
-name: Pipeline
+name: CI Pipeline Python
 
-# 1. Define os gatilhos (quando o workflow vai rodar)
 on:
   push:
     branches:
-      - main  # Substitua por 'master' se for o caso do seu repositório
+      - main
   pull_request:
     branches:
       - main
 
-# 2. Define o que será executado
 jobs:
   test:
-    name: Run Tests
-    runs-on: ubuntu-latest # Sistema operacional da máquina virtual
+    name: Run Pytest
+    runs-on: ubuntu-latest
 
     steps:
-      # Baixa o código do seu repositório para a máquina virtual
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
-      # Configura o ambiente (neste caso, Node.js)
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
         with:
-          node-version: '24'
+          python-version: '3.12'
 
-      # Instala as dependências do projeto
       - name: Instalar dependências
-        run: npm install
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-schema jsonschema requests
 
-      # Executa os testes automatizados
       - name: Rodar os testes
-        run: npm test
+        run: pytest
